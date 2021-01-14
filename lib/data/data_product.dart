@@ -1,6 +1,6 @@
-import 'package:gereaciando_estado/model/product.dart';
+import 'package:gereaciando_estado/models/product.dart';
 
-final product = [
+final Moke_Products = [
   Product(
     id: 'p1',
     title: 'Red Shirt',
