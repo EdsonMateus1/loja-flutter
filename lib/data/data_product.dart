@@ -1,6 +1,6 @@
 import 'package:gereaciando_estado/models/product.dart';
 
-final Moke_Products = [
+final List<Product> Moke_Products = [
   Product(
     id: 'p1',
     title: 'Red Shirt',
