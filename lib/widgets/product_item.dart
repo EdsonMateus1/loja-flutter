@@ -8,7 +8,10 @@ import 'package:provider/provider.dart';
 class ProductItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final product = Provider.of<Product>(context);
+    final product = Provider.of<Product>(
+      context,
+      listen: true,
+    ); // listen: pode ser usando para que o provider nao notifique a aplicacao de uma mudanca
     return ClipRRect(
       borderRadius: BorderRadius.circular(10),
       child: GridTile(
