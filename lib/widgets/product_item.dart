@@ -19,7 +19,8 @@ class ProductItem extends StatelessWidget {
           onTap: () {
             Navigator.of(context).pushNamed(
               AppRoutes.PRODUCT_DETAIL,
-              arguments: product,
+              arguments:
+                  product, // passa argumentos para a rota neste caso e passado o product , ou seja a rota tem acesso aos dados do product
             );
           },
           child: Image.network(

@@ -5,8 +5,19 @@ import '../data/data_product.dart';
 
 class ProductsProvider with ChangeNotifier {
   List<Product> _items = Moke_Products;
+  bool _filter = false;
 
-  List<Product> get items => _items;
+  List<Product> get items {
+    if (_filter) {
+      return _items.where((Product product) => product.isFavorite).toList();
+    }
+    return _items;
+  }
+
+  set activeFilter(bool value) {
+    _filter = value;
+    notifyListeners();
+  }
 
   void addProduct(Product product) {
     _items.add(product);
