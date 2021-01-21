@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:gereaciando_estado/providers/cart_provider.dart';
 import 'package:gereaciando_estado/providers/product_provider.dart';
+import 'package:gereaciando_estado/widgets/cart_badge.dart';
 import 'package:gereaciando_estado/widgets/product_grid.dart';
 import 'package:provider/provider.dart';
 
@@ -27,6 +29,15 @@ class ProductOverviewScreen extends StatelessWidget {
               )
             ],
           ),
+          Consumer<CartProvider>(
+            builder: (ctx, cart, _) => Badge(
+              value: cart.lengthCart.toString(),
+              child: IconButton(
+                icon: Icon(Icons.shopping_cart),
+                onPressed: () {},
+              ),
+            ),
+          )
         ],
       ),
       body: ProductGrid(),
