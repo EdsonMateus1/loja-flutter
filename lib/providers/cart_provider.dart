@@ -5,15 +5,23 @@ import 'package:gereaciando_estado/models/cart_item.dart';
 import 'package:gereaciando_estado/models/product.dart';
 
 class CartProvider with ChangeNotifier {
-  Map<String, CartItem> _items = {};
+  Map<String, CartItem> _cardItems = {};
 
-  Map<String, CartItem> get items => _items;
+  Map<String, CartItem> get cardItems => _cardItems;
 
-  int get lengthCart => _items.length;
+  double get totalAmount {
+    double total = 0.0;
+    _cardItems.forEach((key, cartItem) {
+      total += cartItem.price * cartItem.quatity;
+    });
+    return total;
+  }
 
-  void addItem(Product product) {
-    if (_items.containsKey(product.id)) {
-      _items.update(product.id, (itemCurrent) {
+  int get lengthCart => _cardItems.length;
+
+  void addCardItem(Product product) {
+    if (_cardItems.containsKey(product.id)) {
+      _cardItems.update(product.id, (itemCurrent) {
         return CartItem(
           id: itemCurrent.id,
           title: itemCurrent.title,
@@ -23,7 +31,7 @@ class CartProvider with ChangeNotifier {
         );
       });
     } else {
-      _items.putIfAbsent(product.id, () {
+      _cardItems.putIfAbsent(product.id, () {
         return CartItem(
           id: Random().nextDouble().toString(),
           title: product.title,

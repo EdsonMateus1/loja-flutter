@@ -23,11 +23,26 @@ class MyApp extends StatelessWidget {
         title: "Minha loja",
         theme: ThemeData(
           fontFamily: "Lato",
-          primarySwatch: Colors.purple,
-          accentColor: Colors.deepOrange,
+          primarySwatch: Colors.pink,
+          accentColor: Colors.blueAccent,
           textTheme: ThemeData.light().textTheme.copyWith(
                 headline1: TextStyle(
                   fontFamily: "Lato",
+                ),
+                headline2: TextStyle(
+                  fontFamily: "Lato",
+                  color: Colors.white,
+                  fontSize: 20,
+                ),
+                headline3: TextStyle(
+                  fontFamily: "Lato",
+                  color: Colors.black,
+                  fontSize: 20,
+                ),
+                headline4: TextStyle(
+                  fontFamily: "Lato",
+                  color: Theme.of(context).accentColor,
+                  fontSize: 20,
                 ),
               ),
         ),
