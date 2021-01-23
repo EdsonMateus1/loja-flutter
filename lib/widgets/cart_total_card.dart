@@ -21,7 +21,7 @@ class CardTotal extends StatelessWidget {
             Chip(
               backgroundColor: Theme.of(context).accentColor,
               label: Text(
-                "R\$ ${cartProvider.totalAmount}",
+                "R\$ ${cartProvider.totalAmount.toStringAsFixed(2)}",
                 style: Theme.of(context).textTheme.headline2,
               ),
             ),

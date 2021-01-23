@@ -20,7 +20,7 @@ class CartItem extends StatelessWidget {
         vertical: 4,
       ),
       child: Container(
-        padding: EdgeInsets.fromLTRB(0, 8, 0, 0),
+        padding: EdgeInsets.fromLTRB(8, 8, 0, 0),
         child: Column(
           children: [
             Row(
@@ -36,7 +36,7 @@ class CartItem extends StatelessWidget {
                 ),
                 SizedBox(width: 10),
                 Container(
-                  width: MediaQuery.of(context).size.width - 140,
+                  width: MediaQuery.of(context).size.width - 130,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -45,7 +45,7 @@ class CartItem extends StatelessWidget {
                         style: Theme.of(context).textTheme.headline5,
                       ),
                       Text(
-                        "\$ ${cartItem.price * cartItem.quatity}",
+                        "\$ ${(cartItem.price * cartItem.quatity).toStringAsFixed(2)}",
                         style: Theme.of(context).textTheme.headline5,
                       ),
                     ],
@@ -56,8 +56,14 @@ class CartItem extends StatelessWidget {
             Container(
               width: MediaQuery.of(context).size.width,
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
+                  FittedBox(
+                    child: Text(
+                      "${cartItem.description}",
+                      style: Theme.of(context).textTheme.headline5,
+                    ),
+                  ),
                   GridTileBar(
                     backgroundColor: Colors.white70,
                     leading: Text(

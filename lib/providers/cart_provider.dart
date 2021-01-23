@@ -28,6 +28,7 @@ class CartProvider with ChangeNotifier {
           price: itemCurrent.price,
           imageUrl: itemCurrent.imageUrl,
           quatity: itemCurrent.quatity + 1,
+          description: itemCurrent.description,
         );
       });
     } else {
@@ -37,6 +38,7 @@ class CartProvider with ChangeNotifier {
           title: product.title,
           price: product.price,
           imageUrl: product.imageUrl,
+          description: product.description,
           quatity: 1,
         );
       });
