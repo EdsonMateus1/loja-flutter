@@ -7,6 +7,7 @@ class CardTotal extends StatelessWidget {
   Widget build(BuildContext context) {
     final cartProvider = Provider.of<CartProvider>(context);
     return Card(
+      elevation: 3,
       margin: EdgeInsets.all(25),
       child: Padding(
         padding: EdgeInsets.all(10),

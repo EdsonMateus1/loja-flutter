@@ -17,6 +17,17 @@ class ProductItem extends StatelessWidget {
     return ClipRRect(
       borderRadius: BorderRadius.circular(10),
       child: GridTile(
+        header: Padding(
+          padding: const EdgeInsets.all(6.0),
+          child: Text(
+            "${product.price}",
+            style: TextStyle(
+              fontSize: 15,
+              fontWeight: FontWeight.bold,
+              color: Colors.black,
+            ),
+          ),
+        ),
         child: GestureDetector(
           onTap: () {
             Navigator.of(context).pushNamed(
