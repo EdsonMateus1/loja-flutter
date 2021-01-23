@@ -50,4 +50,7 @@
 //       ),
 //     );
 //   }
+//  final product = productsProvider.items
+//                 .singleWhere((element) => element.title == cartItem.title);
+//             cartProvider.addCardItem(product);
 // }

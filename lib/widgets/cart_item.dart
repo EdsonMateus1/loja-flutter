@@ -19,27 +19,61 @@ class CartItem extends StatelessWidget {
         horizontal: 15,
         vertical: 4,
       ),
-      child: Padding(
-        padding: EdgeInsets.all(8),
-        child: ListTile(
-          leading: Container(
-            width: 100,
-            child: Image.network(
-              cartItem.imageUrl,
-              fit: BoxFit.cover,
+      child: Container(
+        padding: EdgeInsets.fromLTRB(0, 8, 0, 0),
+        child: Column(
+          children: [
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  width: 70,
+                  height: 70,
+                  child: Image.network(
+                    cartItem.imageUrl,
+                    fit: BoxFit.contain,
+                  ),
+                ),
+                SizedBox(width: 10),
+                Container(
+                  width: MediaQuery.of(context).size.width - 140,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "${cartItem.title}",
+                        style: Theme.of(context).textTheme.headline5,
+                      ),
+                      Text(
+                        "\$ ${cartItem.price * cartItem.quatity}",
+                        style: Theme.of(context).textTheme.headline5,
+                      ),
+                    ],
+                  ),
+                ),
+              ],
             ),
-          ),
-          title: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 10),
-            child: Text(cartItem.title),
-          ),
-          subtitle: Text('Total: R\$ ${cartItem.price * cartItem.quatity}'),
-          trailing: Text('${cartItem.quatity}x'),
-          onTap: () {
-            final product = productsProvider.items
-                .singleWhere((element) => element.title == cartItem.title);
-            cartProvider.addCardItem(product);
-          },
+            Container(
+              width: MediaQuery.of(context).size.width,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  GridTileBar(
+                    backgroundColor: Colors.white70,
+                    leading: Text(
+                      "${cartItem.quatity}x",
+                      style: Theme.of(context).textTheme.headline5,
+                    ),
+                    trailing: IconButton(
+                      color: Colors.black,
+                      onPressed: () {},
+                      icon: Icon(Icons.delete),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
         ),
       ),
     );

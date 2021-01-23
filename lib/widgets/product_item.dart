@@ -21,11 +21,7 @@ class ProductItem extends StatelessWidget {
           padding: const EdgeInsets.all(6.0),
           child: Text(
             "${product.price}",
-            style: TextStyle(
-              fontSize: 15,
-              fontWeight: FontWeight.bold,
-              color: Colors.black,
-            ),
+            style: Theme.of(context).textTheme.headline5,
           ),
         ),
         child: GestureDetector(
