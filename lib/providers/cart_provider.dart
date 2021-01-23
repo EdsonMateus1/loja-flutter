@@ -1,13 +1,13 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:gereaciando_estado/models/cart_item.dart';
+import 'package:gereaciando_estado/models/cart_item_modal.dart';
 import 'package:gereaciando_estado/models/product.dart';
 
 class CartProvider with ChangeNotifier {
-  Map<String, CartItem> _cardItems = {};
+  Map<String, CartItemModal> _cardItems = {};
 
-  Map<String, CartItem> get cardItems => _cardItems;
+  Map<String, CartItemModal> get cardItems => _cardItems;
 
   double get totalAmount {
     double total = 0.0;
@@ -22,7 +22,7 @@ class CartProvider with ChangeNotifier {
   void addCardItem(Product product) {
     if (_cardItems.containsKey(product.id)) {
       _cardItems.update(product.id, (itemCurrent) {
-        return CartItem(
+        return CartItemModal(
           id: itemCurrent.id,
           title: itemCurrent.title,
           price: itemCurrent.price,
@@ -32,7 +32,7 @@ class CartProvider with ChangeNotifier {
       });
     } else {
       _cardItems.putIfAbsent(product.id, () {
-        return CartItem(
+        return CartItemModal(
           id: Random().nextDouble().toString(),
           title: product.title,
           price: product.price,
