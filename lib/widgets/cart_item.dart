@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:gereaciando_estado/models/cart_item_modal.dart';
+import 'package:gereaciando_estado/providers/cart_provider.dart';
+import 'package:provider/provider.dart';
+import 'package:gereaciando_estado/providers/product_provider.dart';
 
 class CartItem extends StatelessWidget {
   final CartItemModal cartItem;
@@ -8,6 +11,8 @@ class CartItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final CartProvider cartProvider = Provider.of<CartProvider>(context);
+    final productsProvider = Provider.of<ProductsProvider>(context);
     return Card(
       elevation: 3,
       margin: EdgeInsets.symmetric(
@@ -30,6 +35,11 @@ class CartItem extends StatelessWidget {
           ),
           subtitle: Text('Total: R\$ ${cartItem.price * cartItem.quatity}'),
           trailing: Text('${cartItem.quatity}x'),
+          onTap: () {
+            final product = productsProvider.items
+                .singleWhere((element) => element.title == cartItem.title);
+            cartProvider.addCardItem(product);
+          },
         ),
       ),
     );
