@@ -25,6 +25,15 @@ class CartProvider with ChangeNotifier {
     notifyListeners();
   }
 
+  void addQuatityCartItem(CartItemModal cartItem, int newQuatity) {
+    _cardItems.forEach((key, value) {
+      if (value.id == cartItem.id) {
+        value.quatity = newQuatity;
+      }
+    });
+    notifyListeners();
+  }
+
   void addCardItem(Product product) {
     if (_cardItems.containsKey(product.id)) {
       _cardItems.update(product.id, (itemCurrent) {
@@ -33,7 +42,7 @@ class CartProvider with ChangeNotifier {
           title: itemCurrent.title,
           price: itemCurrent.price,
           imageUrl: itemCurrent.imageUrl,
-          quatity: itemCurrent.quatity + 1,
+          quatity: itemCurrent.quatity,
           description: itemCurrent.description,
         );
       });

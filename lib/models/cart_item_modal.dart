@@ -6,7 +6,7 @@ class CartItemModal {
   final double price;
   final String imageUrl;
   final String description;
-  final int quatity;
+  int quatity;
 
   CartItemModal(
       {@required this.id,

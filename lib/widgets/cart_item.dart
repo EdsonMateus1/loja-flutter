@@ -4,10 +4,23 @@ import 'package:gereaciando_estado/providers/cart_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:gereaciando_estado/providers/product_provider.dart';
 
-class CartItem extends StatelessWidget {
+class CartItem extends StatefulWidget {
   final CartItemModal cartItem;
 
   CartItem({@required this.cartItem});
+
+  @override
+  _CartItemState createState() => _CartItemState();
+}
+
+class _CartItemState extends State<CartItem> {
+  int selected = null;
+
+  @override
+  void initState() {
+    super.initState();
+    selected = widget.cartItem.quatity;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +43,7 @@ class CartItem extends StatelessWidget {
                   width: 70,
                   height: 70,
                   child: Image.network(
-                    cartItem.imageUrl,
+                    widget.cartItem.imageUrl,
                     fit: BoxFit.contain,
                   ),
                 ),
@@ -41,11 +54,11 @@ class CartItem extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        "${cartItem.title}",
+                        "${widget.cartItem.title}",
                         style: Theme.of(context).textTheme.headline6,
                       ),
                       Text(
-                        "\$ ${(cartItem.price * cartItem.quatity).toStringAsFixed(2)}",
+                        "\$ ${(widget.cartItem.price * widget.cartItem.quatity).toStringAsFixed(2)}",
                         style: Theme.of(context).textTheme.headline6,
                       ),
                     ],
@@ -57,19 +70,45 @@ class CartItem extends StatelessWidget {
               backgroundColor: Colors.black87,
               leading: FittedBox(
                 child: Text(
-                  "${cartItem.description}",
+                  "${widget.cartItem.description}",
                   style: Theme.of(context).textTheme.headline5,
                 ),
               ),
-              title: Text(
-                "${cartItem.quatity}x",
-                textAlign: TextAlign.end,
-                style: Theme.of(context).textTheme.headline5,
+              title: Container(
+                margin: EdgeInsets.fromLTRB(20, 0, 0, 0),
+                child: DropdownButton(
+                  items: [
+                    DropdownMenuItem(
+                      child: Text("1x"),
+                      value: 1,
+                    ),
+                    DropdownMenuItem(
+                      child: Text("2x"),
+                      value: 2,
+                    ),
+                    DropdownMenuItem(
+                      child: Text("3x"),
+                      value: 3,
+                    ),
+                    DropdownMenuItem(
+                      child: Text("4x"),
+                      value: 4,
+                    ),
+                  ],
+                  value: selected,
+                  onChanged: (value) {
+                    setState(() {
+                      selected = value;
+                    });
+                    cartProvider.addQuatityCartItem(widget.cartItem, selected);
+                  },
+                  style: Theme.of(context).textTheme.headline5,
+                ),
               ),
               trailing: IconButton(
                 color: Colors.white,
                 onPressed: () {
-                  cartProvider.removeCartItem(cartItem);
+                  cartProvider.removeCartItem(widget.cartItem);
                 },
                 icon: Icon(Icons.delete),
               ),
