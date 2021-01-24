@@ -12,7 +12,57 @@ class ProductDetailScreen extends StatelessWidget {
           product.title,
         ),
       ),
-      body: Container(),
+      body: Column(
+        children: [
+          Container(
+            width: 300,
+            height: 300,
+            child: Image.network(
+              product.imageUrl,
+              fit: BoxFit.contain,
+            ),
+          ),
+          Container(
+            color: Colors.grey[350],
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                children: [
+                  FittedBox(
+                    child: Container(
+                      width: MediaQuery.of(context).size.width - 20,
+                      child: Text(
+                        product.description,
+                        style: Theme.of(context).textTheme.headline3,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          Container(
+            color: Theme.of(context).primaryColor,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    " \$ ${product.price.toString()} a vista",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: "Lato",
+                    ),
+                  ),
+                )
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

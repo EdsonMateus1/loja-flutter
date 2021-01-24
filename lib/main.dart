@@ -36,17 +36,17 @@ class MyApp extends StatelessWidget {
                   fontSize: 20,
                 ),
                 headline3: TextStyle(
-                  fontFamily: "Lato",
-                  color: Colors.black,
-                  fontSize: 20,
-                ),
+                    fontFamily: "Lato",
+                    color: Colors.black,
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold),
                 headline4: TextStyle(
                   fontFamily: "Lato",
                   color: Theme.of(context).accentColor,
                   fontSize: 20,
                 ),
                 headline5: TextStyle(
-                  fontSize: 15,
+                  fontSize: 16,
                   fontWeight: FontWeight.bold,
                   color: Colors.white,
                 ),
