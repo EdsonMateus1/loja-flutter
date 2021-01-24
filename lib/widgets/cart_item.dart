@@ -69,9 +69,12 @@ class _CartItemState extends State<CartItem> {
             GridTileBar(
               backgroundColor: Colors.black87,
               leading: FittedBox(
-                child: Text(
-                  "${widget.cartItem.description}",
-                  style: Theme.of(context).textTheme.headline5,
+                child: Container(
+                  width: 200,
+                  child: Text(
+                    "${widget.cartItem.description}",
+                    style: Theme.of(context).textTheme.headline5,
+                  ),
                 ),
               ),
               title: Container(

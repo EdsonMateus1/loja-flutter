@@ -15,14 +15,15 @@ final List<Product> Moke_Products = [
     description: 'A nice pair of trousers.',
     price: 59.99,
     imageUrl:
-        'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Trousers%2C_dress_%28AM_1960.022-8%29.jpg/512px-Trousers%2C_dress_%28AM_1960.022-8%29.jpg',
+        'https://static.netshoes.com.br/produtos/camisa-internacional-i-2021-sn-torcedor-adidas-masculina/16/NQQ-1034-016/NQQ-1034-016_zoom1.jpg?ts=1584470844&',
   ),
   Product(
     id: 'p3',
     title: 'Yellow Scarf',
     description: 'Warm and cozy - exactly what you need.',
     price: 19.99,
-    imageUrl: 'https://live.staticflickr.com/4043/4438260868_cc79b3369d_z.jpg',
+    imageUrl:
+        'https://a-static.mlcdn.com.br/618x463/blusa-malha-suede-com-amarracao-na-cintura-kinara/kinara/1163bg-g/007aecdf087b880238580220d1ac8a1a.jpg',
   ),
   Product(
     id: 'p4',
@@ -30,6 +31,22 @@ final List<Product> Moke_Products = [
     description: 'Prepare any meal you want.',
     price: 49.99,
     imageUrl:
-        'https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Cast-Iron-Pan.jpg/1024px-Cast-Iron-Pan.jpg',
+        'https://http2.mlstatic.com/D_NQ_NP_655531-MLB31200634647_062019-O.webp',
+  ),
+  Product(
+    id: 'p5',
+    title: 'Xiaomi Redmi Note 9S',
+    description: '4GB + 64GB - Versão Global - Aurora Blue.',
+    price: 1518,
+    imageUrl:
+        'https://images-na.ssl-images-amazon.com/images/I/61ShPQu-u0L._AC_SL1200_.jpg',
+  ),
+  Product(
+    id: 'p6',
+    title: 'All Star',
+    description: 'Tênis All Star Chuck Taylor Branco.',
+    price: 59.90,
+    imageUrl:
+        'https://produtos.fotos-riachuelo.com.br/media/catalog/product/cache/3541e153ef6ead3044d72626c3847968/t/e/tenis-converse-all-star-chuck-taylor-flatform---branco-13658484_foto1_frontal.jpg',
   ),
 ];

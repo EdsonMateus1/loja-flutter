@@ -17,13 +17,6 @@ class ProductItem extends StatelessWidget {
     return ClipRRect(
       borderRadius: BorderRadius.circular(10),
       child: GridTile(
-        header: Padding(
-          padding: const EdgeInsets.all(6.0),
-          child: Text(
-            "${product.price}",
-            style: Theme.of(context).textTheme.headline5,
-          ),
-        ),
         child: GestureDetector(
           onTap: () {
             Navigator.of(context).pushNamed(
@@ -34,7 +27,10 @@ class ProductItem extends StatelessWidget {
           },
           child: Image.network(
             product.imageUrl,
-            fit: BoxFit.fill,
+            //BoxFit.contain O maior possível, mas ainda contendo a fonte inteiramente dentro da caixa de destino.
+            //BoxFit.fill Preencha a caixa de destino distorcendo a proporção da fonte.
+            //BoxFit.cover O menor possível, mas ainda cobrindo toda a caixa de destino..
+            fit: BoxFit.contain,
           ),
         ),
         footer: GridTileBar(
@@ -46,7 +42,7 @@ class ProductItem extends StatelessWidget {
               onPressed: () => productsProvider.tooggleFavorite(product.id)),
           title: Text(
             product.title,
-            textAlign: TextAlign.center,
+            textAlign: TextAlign.start,
           ),
           trailing: IconButton(
             icon: Icon(Icons.shopping_cart),
@@ -54,6 +50,15 @@ class ProductItem extends StatelessWidget {
             onPressed: () {
               cartProvider.addCardItem(product);
             },
+          ),
+          subtitle: Text(
+            "${product.price}",
+            style: TextStyle(
+              fontSize: 15,
+              fontFamily: "Lato",
+              fontWeight: FontWeight.w900,
+              color: Colors.white,
+            ),
           ),
         ),
       ),
