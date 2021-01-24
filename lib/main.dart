@@ -20,6 +20,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => CartProvider()),
       ],
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: "Minha loja",
         theme: ThemeData(
           fontFamily: "Lato",
@@ -45,6 +46,11 @@ class MyApp extends StatelessWidget {
                   fontSize: 20,
                 ),
                 headline5: TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+                headline6: TextStyle(
                   fontSize: 15,
                   fontWeight: FontWeight.bold,
                   color: Colors.black,

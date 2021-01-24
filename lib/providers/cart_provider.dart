@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:gereaciando_estado/models/cart_item_modal.dart';
 import 'package:gereaciando_estado/models/product.dart';
+import 'package:gereaciando_estado/widgets/cart_item.dart';
 
 class CartProvider with ChangeNotifier {
   Map<String, CartItemModal> _cardItems = {};
@@ -18,6 +19,11 @@ class CartProvider with ChangeNotifier {
   }
 
   int get lengthCart => _cardItems.length;
+
+  void removeCartItem(CartItemModal cartItem) {
+    _cardItems.removeWhere((key, value) => value.id == cartItem.id);
+    notifyListeners();
+  }
 
   void addCardItem(Product product) {
     if (_cardItems.containsKey(product.id)) {

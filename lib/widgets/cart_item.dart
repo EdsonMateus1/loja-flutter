@@ -20,7 +20,7 @@ class CartItem extends StatelessWidget {
         vertical: 4,
       ),
       child: Container(
-        padding: EdgeInsets.fromLTRB(8, 8, 0, 0),
+        padding: EdgeInsets.fromLTRB(0, 8, 0, 0),
         child: Column(
           children: [
             Row(
@@ -42,41 +42,36 @@ class CartItem extends StatelessWidget {
                     children: [
                       Text(
                         "${cartItem.title}",
-                        style: Theme.of(context).textTheme.headline5,
+                        style: Theme.of(context).textTheme.headline6,
                       ),
                       Text(
                         "\$ ${(cartItem.price * cartItem.quatity).toStringAsFixed(2)}",
-                        style: Theme.of(context).textTheme.headline5,
+                        style: Theme.of(context).textTheme.headline6,
                       ),
                     ],
                   ),
                 ),
               ],
             ),
-            Container(
-              width: MediaQuery.of(context).size.width,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  FittedBox(
-                    child: Text(
-                      "${cartItem.description}",
-                      style: Theme.of(context).textTheme.headline5,
-                    ),
-                  ),
-                  GridTileBar(
-                    backgroundColor: Colors.white70,
-                    leading: Text(
-                      "${cartItem.quatity}x",
-                      style: Theme.of(context).textTheme.headline5,
-                    ),
-                    trailing: IconButton(
-                      color: Colors.black,
-                      onPressed: () {},
-                      icon: Icon(Icons.delete),
-                    ),
-                  ),
-                ],
+            GridTileBar(
+              backgroundColor: Colors.black87,
+              leading: FittedBox(
+                child: Text(
+                  "${cartItem.description}",
+                  style: Theme.of(context).textTheme.headline5,
+                ),
+              ),
+              title: Text(
+                "${cartItem.quatity}x",
+                textAlign: TextAlign.end,
+                style: Theme.of(context).textTheme.headline5,
+              ),
+              trailing: IconButton(
+                color: Colors.white,
+                onPressed: () {
+                  cartProvider.removeCartItem(cartItem);
+                },
+                icon: Icon(Icons.delete),
               ),
             ),
           ],
