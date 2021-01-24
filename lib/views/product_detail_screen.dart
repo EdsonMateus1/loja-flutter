@@ -52,7 +52,7 @@ class ProductDetailScreen extends StatelessWidget {
                     " \$ ${product.price.toString()} a vista",
                     style: TextStyle(
                       color: Colors.white,
-                      fontSize: 30,
+                      fontSize: 20,
                       fontWeight: FontWeight.bold,
                       fontFamily: "Lato",
                     ),

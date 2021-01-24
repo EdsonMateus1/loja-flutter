@@ -38,7 +38,7 @@ class MyApp extends StatelessWidget {
                 headline3: TextStyle(
                     fontFamily: "Lato",
                     color: Colors.black,
-                    fontSize: 25,
+                    fontSize: 20,
                     fontWeight: FontWeight.bold),
                 headline4: TextStyle(
                   fontFamily: "Lato",
