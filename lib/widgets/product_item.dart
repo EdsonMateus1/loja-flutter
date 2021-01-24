@@ -3,6 +3,7 @@ import 'package:gereaciando_estado/models/product.dart';
 import 'package:gereaciando_estado/providers/cart_provider.dart';
 import 'package:gereaciando_estado/providers/product_provider.dart';
 import 'package:gereaciando_estado/utils/app_routes.dart';
+import 'package:gereaciando_estado/widgets/alert_add_cart.dart';
 import 'package:provider/provider.dart';
 
 class ProductItem extends StatelessWidget {
@@ -49,6 +50,10 @@ class ProductItem extends StatelessWidget {
             color: Theme.of(context).accentColor,
             onPressed: () {
               cartProvider.addCardItem(product);
+              showDialog(
+                context: context,
+                builder: (context) => AlertAddCart(),
+              );
             },
           ),
           subtitle: Text(

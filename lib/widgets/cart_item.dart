@@ -28,7 +28,7 @@ class _CartItemState extends State<CartItem> {
     final CartProvider cartProvider = Provider.of<CartProvider>(context);
     final productsProvider = Provider.of<ProductsProvider>(context);
     return Container(
-      margin: EdgeInsets.fromLTRB(0, 0, 0, 20),
+      margin: EdgeInsets.fromLTRB(0, 0, 0, 50),
       child: Card(
         elevation: 3,
         margin: EdgeInsets.symmetric(
@@ -116,10 +116,11 @@ class _CartItemState extends State<CartItem> {
                   color: Colors.white,
                   onPressed: () {
                     showDialog(
-                        context: context,
-                        builder: (context) {
-                          return AlertConfirmeDelete(widget.cartItem);
-                        });
+                      context: context,
+                      builder: (context) {
+                        return AlertConfirmeDelete(widget.cartItem);
+                      },
+                    );
                   },
                   icon: Icon(Icons.delete),
                 ),
