@@ -8,11 +8,12 @@ class CartItemModal {
   final String description;
   int quatity;
 
-  CartItemModal(
-      {@required this.id,
-      @required this.title,
-      @required this.price,
-      @required this.imageUrl,
-      @required this.quatity,
-      @required this.description});
+  CartItemModal({
+    @required this.id,
+    @required this.title,
+    @required this.price,
+    @required this.imageUrl,
+    @required this.quatity,
+    @required this.description,
+  });
 }

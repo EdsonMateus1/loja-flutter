@@ -49,4 +49,12 @@ final List<Product> Moke_Products = [
     imageUrl:
         'https://produtos.fotos-riachuelo.com.br/media/catalog/product/cache/3541e153ef6ead3044d72626c3847968/t/e/tenis-converse-all-star-chuck-taylor-flatform---branco-13658484_foto1_frontal.jpg',
   ),
+  Product(
+    id: 'p7',
+    title: ' Xiaomi Redmi 9 India ',
+    description: '64GB 4GB RAM Tela 6,53 Octa-Core.',
+    price: 1159,
+    imageUrl:
+        'https://images-na.ssl-images-amazon.com/images/I/71uZrDPrsRL._AC_SL1500_.jpg',
+  ),
 ];
