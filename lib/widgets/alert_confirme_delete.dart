@@ -12,6 +12,7 @@ class AlertConfirmeDelete extends StatelessWidget {
     final CartProvider cartProvider = Provider.of<CartProvider>(context);
     return AlertDialog(
       actions: [
+        // ignore: deprecated_member_use
         FlatButton(
           onPressed: () {
             cartProvider.removeCartItem(cartItem);
@@ -19,6 +20,7 @@ class AlertConfirmeDelete extends StatelessWidget {
           },
           child: Text("Sim"),
         ),
+        // ignore: deprecated_member_use
         FlatButton(
           onPressed: () {
             Navigator.of(context).pop();

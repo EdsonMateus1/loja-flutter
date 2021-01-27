@@ -5,6 +5,7 @@ import 'package:gereaciando_estado/models/cart_item_modal.dart';
 import 'package:gereaciando_estado/models/product.dart';
 
 class CartProvider with ChangeNotifier {
+  //mixins
   Map<String, CartItemModal> _cardItems = {};
 
   Map<String, CartItemModal> get cardItems => _cardItems;
@@ -33,7 +34,7 @@ class CartProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  void addCardItem(Product product) {
+  void addCardItem(ProductModal product) {
     if (_cardItems.containsKey(product.id)) {
       _cardItems.update(product.id, (itemCurrent) {
         return CartItemModal(
@@ -57,6 +58,11 @@ class CartProvider with ChangeNotifier {
         );
       });
     }
+    notifyListeners();
+  }
+
+  void clear() {
+    _cardItems = {};
     notifyListeners();
   }
 }

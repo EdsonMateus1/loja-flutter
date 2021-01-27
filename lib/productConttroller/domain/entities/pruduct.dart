@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 
-class ProductModal {
+class ProductEnti {
   final String id;
   final String title;
   final String description;
@@ -8,7 +8,7 @@ class ProductModal {
   final String imageUrl;
   bool isFavorite;
 
-  ProductModal({
+  ProductEnti({
     @required this.id,
     @required this.title,
     @required this.description,

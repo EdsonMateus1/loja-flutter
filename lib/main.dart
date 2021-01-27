@@ -1,4 +1,5 @@
 import 'package:gereaciando_estado/providers/cart_provider.dart';
+import 'package:gereaciando_estado/providers/order_provider.dart';
 import 'package:gereaciando_estado/providers/product_provider.dart';
 import 'package:gereaciando_estado/views/cart_screen.dart';
 import 'package:provider/provider.dart';
@@ -18,6 +19,7 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (_) => ProductsProvider()),
         ChangeNotifierProvider(create: (_) => CartProvider()),
+        ChangeNotifierProvider(create: (_) => OrderProvider()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

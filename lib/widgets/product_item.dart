@@ -7,7 +7,7 @@ import 'package:gereaciando_estado/widgets/alert_add_cart.dart';
 import 'package:provider/provider.dart';
 
 class ProductItem extends StatelessWidget {
-  final Product product;
+  final ProductModal product;
 
   const ProductItem(this.product);
 
