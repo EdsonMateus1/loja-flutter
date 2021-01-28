@@ -23,11 +23,13 @@ O projeto ainda está em desenvolvimento e as próximas atualizações serão vo
 
 - [x] tela listagem de produtos
 - [x] rotas 
-- [x] mini card
+- [x] carrrinho
+- [x] mavegacao
+- [ ] tela de detalhes de pedidos
+- [ ] tela de detalhes do produto
 - [ ] cadastrar produto
 - [ ] finalizar compra
 - [ ] checkout
-- [ ] tela de detalhes do produto
 
 ## 💻 Pré-requisitos
 
