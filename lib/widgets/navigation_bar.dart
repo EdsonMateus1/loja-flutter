@@ -8,8 +8,7 @@ class NavigationBar extends StatelessWidget {
     currRoute = value;
     if (currRoute == 0) {
       Navigator.of(context).pushReplacementNamed(AppRoutes.HOME);
-    }
-    if (currRoute == 1) {
+    } else if (currRoute == 1) {
       Navigator.of(context).pushReplacementNamed(AppRoutes.CART);
     }
   }
