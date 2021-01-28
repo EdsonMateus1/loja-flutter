@@ -3,6 +3,7 @@ import 'package:gereaciando_estado/models/cart_item_modal.dart';
 import 'package:gereaciando_estado/providers/cart_provider.dart';
 import 'package:gereaciando_estado/widgets/cart_item.dart';
 import 'package:gereaciando_estado/widgets/cart_total_card.dart';
+import 'package:gereaciando_estado/widgets/navigation_bar.dart';
 import 'package:provider/provider.dart';
 
 class CartScreen extends StatelessWidget {
@@ -32,6 +33,7 @@ class CartScreen extends StatelessWidget {
           )
         ],
       ),
+      bottomNavigationBar: NavigationBar(),
     );
   }
 }

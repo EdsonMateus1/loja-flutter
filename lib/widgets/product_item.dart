@@ -20,7 +20,7 @@ class ProductItem extends StatelessWidget {
       child: GridTile(
         child: GestureDetector(
           onTap: () {
-            Navigator.of(context).pushNamed(
+            Navigator.of(context).pushReplacementNamed(
               AppRoutes.PRODUCT_DETAIL,
               arguments:
                   product, // passa argumentos para a rota neste caso e passado o product , ou seja a rota tem acesso aos dados do product
@@ -46,7 +46,7 @@ class ProductItem extends StatelessWidget {
             textAlign: TextAlign.start,
           ),
           trailing: IconButton(
-            icon: Icon(Icons.shopping_cart),
+            icon: Icon(Icons.add_shopping_cart),
             color: Theme.of(context).accentColor,
             onPressed: () {
               cartProvider.addCardItem(product);

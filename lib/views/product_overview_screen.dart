@@ -3,6 +3,7 @@ import 'package:gereaciando_estado/providers/cart_provider.dart';
 import 'package:gereaciando_estado/providers/product_provider.dart';
 import 'package:gereaciando_estado/utils/app_routes.dart';
 import 'package:gereaciando_estado/widgets/cart_badge.dart';
+import 'package:gereaciando_estado/widgets/navigation_bar.dart';
 import 'package:gereaciando_estado/widgets/product_grid.dart';
 import 'package:provider/provider.dart';
 
@@ -31,11 +32,9 @@ class ProductOverviewScreen extends StatelessWidget {
             ],
           ),
           Consumer<CartProvider>(
-            child: IconButton(
-              icon: Icon(Icons.shopping_cart),
-              onPressed: () {
-                Navigator.of(context).pushNamed(AppRoutes.CART);
-              },
+            child: Container(
+              width: 45,
+              child: Icon(Icons.shopping_cart),
             ),
             builder: (ctx, cart, child) => Badge(
               value: cart.lengthCart.toString(),
@@ -48,6 +47,7 @@ class ProductOverviewScreen extends StatelessWidget {
         ],
       ),
       body: ProductGrid(),
+      bottomNavigationBar: NavigationBar(),
     );
   }
 }

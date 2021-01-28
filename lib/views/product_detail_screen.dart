@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gereaciando_estado/models/product.dart';
+import 'package:gereaciando_estado/widgets/navigation_bar.dart';
 
 class ProductDetailScreen extends StatelessWidget {
   @override
@@ -63,6 +64,7 @@ class ProductDetailScreen extends StatelessWidget {
           ),
         ],
       ),
+      bottomNavigationBar: NavigationBar(),
     );
   }
 }
