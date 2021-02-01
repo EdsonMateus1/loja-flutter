@@ -2,6 +2,7 @@ import 'package:gereaciando_estado/providers/cart_provider.dart';
 import 'package:gereaciando_estado/providers/order_provider.dart';
 import 'package:gereaciando_estado/providers/product_provider.dart';
 import 'package:gereaciando_estado/views/cart_screen.dart';
+import 'package:gereaciando_estado/views/order_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:gereaciando_estado/utils/app_routes.dart';
@@ -31,31 +32,32 @@ class MyApp extends StatelessWidget {
           textTheme: ThemeData.light().textTheme.copyWith(
                 headline1: TextStyle(
                   fontFamily: "Lato",
+                  letterSpacing: 0.8,
                 ),
-                headline2: TextStyle(
+                headline3: TextStyle(
                   fontFamily: "Lato",
                   color: Colors.white,
                   fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  letterSpacing: 0.8,
                 ),
-                headline3: TextStyle(
-                    fontFamily: "Lato",
-                    color: Colors.black,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold),
                 headline4: TextStyle(
                   fontFamily: "Lato",
                   color: Theme.of(context).accentColor,
                   fontSize: 20,
+                  letterSpacing: 0.8,
                 ),
                 headline5: TextStyle(
-                  fontSize: 16,
+                  fontSize: 17,
                   fontWeight: FontWeight.bold,
                   color: Colors.white,
+                  letterSpacing: 0.8,
                 ),
                 headline6: TextStyle(
-                  fontSize: 15,
+                  fontSize: 17,
                   fontWeight: FontWeight.bold,
                   color: Colors.black,
+                  letterSpacing: 0.8,
                 ),
               ),
         ),
@@ -63,7 +65,8 @@ class MyApp extends StatelessWidget {
         routes: {
           AppRoutes.HOME: (ctx) => ProductOverviewScreen(),
           AppRoutes.PRODUCT_DETAIL: (ctx) => ProductDetailScreen(),
-          AppRoutes.CART: (ctx) => CartScreen()
+          AppRoutes.CART: (ctx) => CartScreen(),
+          AppRoutes.ORDER: (ctx) => OrderScreen(),
         },
       ),
     );

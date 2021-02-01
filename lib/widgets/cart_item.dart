@@ -26,7 +26,6 @@ class _CartItemState extends State<CartItem> {
   @override
   Widget build(BuildContext context) {
     final CartProvider cartProvider = Provider.of<CartProvider>(context);
-    final productsProvider = Provider.of<ProductsProvider>(context);
     return Container(
       margin: EdgeInsets.fromLTRB(0, 0, 0, 50),
       child: Card(

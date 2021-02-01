@@ -27,10 +27,18 @@ class AlertConfirmeDelete extends StatelessWidget {
         ),
       ],
       title: Text(
-        "Ops 😓 você tem certeza disso?",
+        "Ops 😓",
         style: TextStyle(
           fontSize: 18,
           fontFamily: "Lato",
+        ),
+      ),
+      content: Text(
+        "Tem certeza que deseja remover esse item do seu carrinho?",
+        style: TextStyle(
+          fontSize: 17,
+          fontFamily: "Lato",
+          letterSpacing: 0.8,
         ),
       ),
     );

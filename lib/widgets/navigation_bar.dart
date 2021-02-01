@@ -10,6 +10,8 @@ class NavigationBar extends StatelessWidget {
       Navigator.of(context).pushReplacementNamed(AppRoutes.HOME);
     } else if (currRoute == 1) {
       Navigator.of(context).pushReplacementNamed(AppRoutes.CART);
+    } else if (currRoute == 2) {
+      Navigator.of(context).pushReplacementNamed(AppRoutes.ORDER);
     }
   }
 

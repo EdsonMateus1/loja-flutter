@@ -19,7 +19,6 @@ class CartScreen extends StatelessWidget {
       ),
       body: Column(
         children: [
-          CardTotal(),
           SizedBox(
             height: 20,
           ),
@@ -30,7 +29,8 @@ class CartScreen extends StatelessWidget {
                 cartItem: cartItem[i],
               ),
             ),
-          )
+          ),
+          CardTotal(),
         ],
       ),
       bottomNavigationBar: NavigationBar(),

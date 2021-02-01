@@ -11,7 +11,7 @@ class CardTotal extends StatelessWidget {
     final orderProvider = Provider.of<OrderProvider>(context);
     return Card(
       elevation: 3,
-      margin: EdgeInsets.all(25),
+      color: Theme.of(context).accentColor,
       child: Padding(
         padding: EdgeInsets.all(10),
         child: Row(
@@ -21,12 +21,9 @@ class CardTotal extends StatelessWidget {
               style: Theme.of(context).textTheme.headline3,
             ),
             SizedBox(width: 10),
-            Chip(
-              backgroundColor: Theme.of(context).accentColor,
-              label: Text(
-                "R\$ ${cartProvider.totalAmount.toStringAsFixed(2)}",
-                style: Theme.of(context).textTheme.headline2,
-              ),
+            Text(
+              "R\$ ${cartProvider.totalAmount.toStringAsFixed(2)}",
+              style: Theme.of(context).textTheme.headline3,
             ),
             Spacer(),
             TextButton(
@@ -36,7 +33,7 @@ class CardTotal extends StatelessWidget {
               },
               child: Text(
                 "Comprar",
-                style: Theme.of(context).textTheme.headline4,
+                style: Theme.of(context).textTheme.headline3,
               ),
             )
           ],
