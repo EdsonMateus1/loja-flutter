@@ -6,9 +6,7 @@ import 'package:gereaciando_estado/models/order.dart';
 
 class OrderItem extends StatefulWidget {
   final OrderModal order;
-
   const OrderItem({this.order});
-
   @override
   _OrderItemState createState() => _OrderItemState();
 }
@@ -64,15 +62,11 @@ class _OrderItemState extends State<OrderItem> {
       AnimatedContainer(
         duration: Duration(milliseconds: 300),
         height: _expanded ? _products.length * 90.0 : 0,
-        child: AnimatedCrossFade(
-          duration: Duration(milliseconds: 300),
-          crossFadeState:
-              _expanded ? CrossFadeState.showFirst : CrossFadeState.showSecond,
-          secondChild: Container(),
-          firstChild: ListView(
-            children: [
-              Column(
-                children: _products.map((products) {
+        child: ListView(
+          children: [
+            Column(
+              children: _products.map(
+                (products) {
                   return Padding(
                     padding: const EdgeInsets.symmetric(vertical: 8),
                     child: Column(
@@ -106,10 +100,10 @@ class _OrderItemState extends State<OrderItem> {
                       ],
                     ),
                   );
-                }).toList(),
-              ),
-            ],
-          ),
+                },
+              ).toList(),
+            ),
+          ],
         ),
       )
     ]);
