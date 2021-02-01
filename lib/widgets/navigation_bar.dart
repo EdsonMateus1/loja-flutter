@@ -20,15 +20,15 @@ class NavigationBar extends StatelessWidget {
       items: [
         BottomNavigationBarItem(
           icon: Icon(Icons.home),
-          title: Text("home"),
+          label: "home",
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.shopping_cart),
-          title: Text("carrinho"),
+          label: "carrinho",
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.view_headline),
-          title: Text("meus pedidos"),
+          label: "meus pedidos",
         ),
       ],
       onTap: (value) {

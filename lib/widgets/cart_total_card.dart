@@ -29,8 +29,7 @@ class CardTotal extends StatelessWidget {
               ),
             ),
             Spacer(),
-            // ignore: deprecated_member_use
-            FlatButton(
+            TextButton(
               onPressed: () {
                 orderProvider.addOrder(cartProvider);
                 cartProvider.clear();

@@ -11,6 +11,8 @@ class OrderProvider with ChangeNotifier {
 
   List<OrderModal> get orders => _orders;
 
+  int get lengthOrder => _orders.length;
+
   void addOrder(CartProvider cartItem) {
     _orders.insert(
       0,
