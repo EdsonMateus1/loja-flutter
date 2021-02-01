@@ -25,76 +25,93 @@ class _OrderItemState extends State<OrderItem> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        ListTile(
-          title: Text(
-            "\$ ${widget.order.total.toStringAsFixed(2)}",
+    return Column(children: [
+      ListTile(
+        title: Text(
+          "\$ ${widget.order.total.toStringAsFixed(2)}",
+          style: TextStyle(
+            fontFamily: "Lato",
+            fontSize: 19,
+            color: Colors.black,
+            letterSpacing: 1.1,
+          ),
+        ),
+        subtitle: Padding(
+          padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
+          child: Text(
+            DateFormat("dd/MM/yyyy/ hh:mm").format(widget.order.date),
             style: TextStyle(
               fontFamily: "Lato",
-              fontSize: 19,
-              color: Colors.black,
               letterSpacing: 1.1,
             ),
           ),
-          subtitle: Padding(
-            padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
-            child: Text(
-              DateFormat("dd/MM/yyyy/ hh:mm").format(widget.order.date),
-              style: TextStyle(
-                fontFamily: "Lato",
-                letterSpacing: 1.1,
-              ),
-            ),
+        ),
+        trailing: IconButton(
+          icon: Icon(
+            _expanded ? Icons.expand_less : Icons.expand_more,
           ),
-          trailing: IconButton(
-            icon: Icon(
-              Icons.expand_more,
-            ),
-            onPressed: () {
-              setState(() {
-                _expanded = !_expanded;
-              });
-            },
+          onPressed: () {
+            setState(() {
+              _expanded = !_expanded;
+            });
+          },
+        ),
+      ),
+      if (_expanded)
+        SizedBox(
+          height: 20,
+        ),
+      AnimatedContainer(
+        duration: Duration(milliseconds: 300),
+        height: _expanded ? _products.length * 90.0 : 0,
+        child: AnimatedCrossFade(
+          duration: Duration(milliseconds: 300),
+          crossFadeState:
+              _expanded ? CrossFadeState.showFirst : CrossFadeState.showSecond,
+          secondChild: Container(),
+          firstChild: ListView(
+            children: [
+              Column(
+                children: _products.map((products) {
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 8),
+                    child: Column(
+                      children: [
+                        ListTile(
+                          leading: Container(
+                            height: 70,
+                            width: 70,
+                            child: Image.network(
+                              "${products.imageUrl}",
+                            ),
+                          ),
+                          title: Text("${products.title}"),
+                          subtitle: Text(
+                            "quantidade:${products.quatity}",
+                            style: TextStyle(
+                              fontFamily: "Lato",
+                              fontSize: 19,
+                              color: Colors.black,
+                              letterSpacing: 1.1,
+                            ),
+                          ),
+                          trailing: Text(
+                            "\$ ${products.price} cada",
+                            style: TextStyle(
+                              fontFamily: "Lato",
+                              letterSpacing: 1.1,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                }).toList(),
+              ),
+            ],
           ),
         ),
-        if (_expanded)
-          Container(
-            margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
-            height: _products.length * 80.0,
-            child: ListView.builder(
-              itemCount: _products.length,
-              itemBuilder: (context, i) {
-                return ListTile(
-                  leading: Container(
-                    height: 70,
-                    width: 70,
-                    child: Image.network(
-                      "${_products[i].imageUrl}",
-                    ),
-                  ),
-                  title: Text("${_products[i].title}"),
-                  subtitle: Text(
-                    "quantidade:${_products[i].quatity}",
-                    style: TextStyle(
-                      fontFamily: "Lato",
-                      fontSize: 19,
-                      color: Colors.black,
-                      letterSpacing: 1.1,
-                    ),
-                  ),
-                  trailing: Text(
-                    "\$ ${_products[i].price} cada",
-                    style: TextStyle(
-                      fontFamily: "Lato",
-                      letterSpacing: 1.1,
-                    ),
-                  ),
-                );
-              },
-            ),
-          )
-      ],
-    );
+      )
+    ]);
   }
 }

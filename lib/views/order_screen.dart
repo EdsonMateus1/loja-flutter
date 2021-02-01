@@ -24,7 +24,7 @@ class OrderScreen extends StatelessWidget {
                   order: orderProvider.orders[i],
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  padding: const EdgeInsets.all(2.0),
                   child: Divider(
                     height: 20,
                     thickness: 1,
