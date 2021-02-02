@@ -12,12 +12,15 @@ class NavigationBar extends StatelessWidget {
       Navigator.of(context).pushReplacementNamed(AppRoutes.CART);
     } else if (currRoute == 2) {
       Navigator.of(context).pushReplacementNamed(AppRoutes.ORDER);
+    } else if (currRoute == 3) {
+      Navigator.of(context).pushReplacementNamed(AppRoutes.CONFIGURATION);
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
+      type: BottomNavigationBarType.fixed,
       currentIndex: currRoute,
       items: [
         BottomNavigationBarItem(
@@ -31,6 +34,10 @@ class NavigationBar extends StatelessWidget {
         BottomNavigationBarItem(
           icon: Icon(Icons.view_headline),
           label: "meus pedidos",
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.app_settings_alt),
+          label: "Gerenciar",
         ),
       ],
       onTap: (value) {

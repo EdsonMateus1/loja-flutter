@@ -60,7 +60,7 @@ class _OrderItemState extends State<OrderItem> {
           height: 20,
         ),
       AnimatedContainer(
-        duration: Duration(milliseconds: 300),
+        duration: Duration(milliseconds: 200),
         height: _expanded ? _products.length * 90.0 : 0,
         child: ListView(
           children: [

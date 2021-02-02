@@ -16,6 +16,8 @@ class ProductsProvider with ChangeNotifier {
     return _products;
   }
 
+  int get lengthProducts => _products.length;
+
   set activeFilter(bool value) {
     _filter = value;
     notifyListeners();

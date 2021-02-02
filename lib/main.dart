@@ -2,6 +2,7 @@ import 'package:gereaciando_estado/providers/cart_provider.dart';
 import 'package:gereaciando_estado/providers/order_provider.dart';
 import 'package:gereaciando_estado/providers/product_provider.dart';
 import 'package:gereaciando_estado/views/cart_screen.dart';
+import 'package:gereaciando_estado/views/configuration_screen.dart';
 import 'package:gereaciando_estado/views/order_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
@@ -33,6 +34,12 @@ class MyApp extends StatelessWidget {
                 headline1: TextStyle(
                   fontFamily: "Lato",
                   letterSpacing: 0.8,
+                ),
+                headline2: TextStyle(
+                  fontFamily: "Lato",
+                  fontSize: 19,
+                  color: Colors.black,
+                  letterSpacing: 1.1,
                 ),
                 headline3: TextStyle(
                   fontFamily: "Lato",
@@ -67,6 +74,7 @@ class MyApp extends StatelessWidget {
           AppRoutes.PRODUCT_DETAIL: (ctx) => ProductDetailScreen(),
           AppRoutes.CART: (ctx) => CartScreen(),
           AppRoutes.ORDER: (ctx) => OrderScreen(),
+          AppRoutes.CONFIGURATION: (ctx) => ConfigurationScreen(),
         },
       ),
     );
