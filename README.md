@@ -1,9 +1,25 @@
 # Loja Flutter
 
 
-![Screenshot_1](https://user-images.githubusercontent.com/57047448/106073518-fd1ac000-60e8-11eb-80f5-d4444261003e.png)
 
-![Screenshot_2](https://user-images.githubusercontent.com/57047448/106073548-0d329f80-60e9-11eb-8105-ad659057a9b2.png)
+<img src="imgs_design\Screenshot_1.png" />
+
+<br>
+<br>
+
+
+<img src="imgs_design\Screenshot_2.png" />
+
+<br>
+<br>
+
+
+<img src="imgs_design\Screenshot_3.png" />
+
+<br>
+<br>
+
+<img src="imgs_design\Screenshot_4.png" />
 
 
 <br>
