@@ -47,17 +47,19 @@ class ProductOverviewScreen extends StatelessWidget {
           )
         ],
       ),
-      body: Column(
-        children: [
-          Container(
-            height: MediaQuery.of(context).size.height * 0.30,
-            child: BannerCarrusel(),
-          ),
-          Container(
-            height: MediaQuery.of(context).size.height * 0.50,
-            child: ProductGrid(),
-          ),
-        ],
+      body: LayoutBuilder(
+        builder: (context, constraints) => Column(
+          children: [
+            Container(
+              height: constraints.maxHeight * 0.40,
+              child: BannerCarrusel(),
+            ),
+            Container(
+              height: constraints.maxHeight * 0.60,
+              child: ProductGrid(),
+            ),
+          ],
+        ),
       ),
       bottomNavigationBar: NavigationBar(),
     );
