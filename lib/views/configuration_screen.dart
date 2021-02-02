@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:gereaciando_estado/models/product.dart';
 import 'package:gereaciando_estado/providers/product_provider.dart';
 import 'package:gereaciando_estado/widgets/Product_config_item.dart';
 import 'package:provider/provider.dart';

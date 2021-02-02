@@ -62,48 +62,44 @@ class _OrderItemState extends State<OrderItem> {
       AnimatedContainer(
         duration: Duration(milliseconds: 200),
         height: _expanded ? _products.length * 90.0 : 0,
-        child: ListView(
-          children: [
-            Column(
-              children: _products.map(
-                (products) {
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 8),
-                    child: Column(
-                      children: [
-                        ListTile(
-                          leading: Container(
-                            height: 70,
-                            width: 70,
-                            child: Image.network(
-                              "${products.imageUrl}",
-                            ),
-                          ),
-                          title: Text("${products.title}"),
-                          subtitle: Text(
-                            "quantidade:${products.quatity}",
-                            style: TextStyle(
-                              fontFamily: "Lato",
-                              fontSize: 19,
-                              color: Colors.black,
-                              letterSpacing: 1.1,
-                            ),
-                          ),
-                          trailing: Text(
-                            "\$ ${products.price} cada",
-                            style: TextStyle(
-                              fontFamily: "Lato",
-                              letterSpacing: 1.1,
-                            ),
-                          ),
+        child: Column(
+          children: _products.map(
+            (products) {
+              return Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8),
+                child: Column(
+                  children: [
+                    ListTile(
+                      leading: Container(
+                        height: 70,
+                        width: 70,
+                        child: Image.network(
+                          "${products.imageUrl}",
                         ),
-                      ],
+                      ),
+                      title: Text("${products.title}"),
+                      subtitle: Text(
+                        "quantidade:${products.quatity}",
+                        style: TextStyle(
+                          fontFamily: "Lato",
+                          fontSize: 19,
+                          color: Colors.black,
+                          letterSpacing: 1.1,
+                        ),
+                      ),
+                      trailing: Text(
+                        "\$ ${products.price} cada",
+                        style: TextStyle(
+                          fontFamily: "Lato",
+                          letterSpacing: 1.1,
+                        ),
+                      ),
                     ),
-                  );
-                },
-              ).toList(),
-            ),
-          ],
+                  ],
+                ),
+              );
+            },
+          ).toList(),
         ),
       )
     ]);
