@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gereaciando_estado/providers/cart_provider.dart';
 import 'package:gereaciando_estado/providers/product_provider.dart';
 import 'package:gereaciando_estado/utils/app_routes.dart';
+import 'package:gereaciando_estado/widgets/banner_carrusel.dart';
 import 'package:gereaciando_estado/widgets/cart_badge.dart';
 import 'package:gereaciando_estado/widgets/navigation_bar.dart';
 import 'package:gereaciando_estado/widgets/product_grid.dart';
@@ -46,7 +47,18 @@ class ProductOverviewScreen extends StatelessWidget {
           )
         ],
       ),
-      body: ProductGrid(),
+      body: Column(
+        children: [
+          Container(
+            height: MediaQuery.of(context).size.height * 0.30,
+            child: BannerCarrusel(),
+          ),
+          Container(
+            height: MediaQuery.of(context).size.height * 0.50,
+            child: ProductGrid(),
+          ),
+        ],
+      ),
       bottomNavigationBar: NavigationBar(),
     );
   }
