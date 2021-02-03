@@ -4,6 +4,7 @@ import 'package:gereaciando_estado/providers/product_provider.dart';
 import 'package:gereaciando_estado/views/cart_screen.dart';
 import 'package:gereaciando_estado/views/configuration_screen.dart';
 import 'package:gereaciando_estado/views/order_screen.dart';
+import 'package:gereaciando_estado/views/product_form_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:gereaciando_estado/utils/app_routes.dart';
@@ -74,6 +75,7 @@ class MyApp extends StatelessWidget {
           AppRoutes.CART: (ctx) => CartScreen(),
           AppRoutes.ORDER: (ctx) => OrderScreen(),
           AppRoutes.CONFIGURATION: (ctx) => ConfigurationScreen(),
+          AppRoutes.FORM_PRODUCT: (ctx) => ProductFormScreen(),
         },
       ),
     );

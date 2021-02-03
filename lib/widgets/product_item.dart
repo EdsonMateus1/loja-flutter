@@ -52,7 +52,7 @@ class ProductItem extends StatelessWidget {
               cartProvider.addCardItem(product);
               showDialog(
                 context: context,
-                builder: (context) => AlertAddCart(),
+                builder: (_) => AlertAddCart(),
               );
             },
           ),

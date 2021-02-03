@@ -15,13 +15,13 @@ class CartItem extends StatefulWidget {
 }
 
 class _CartItemState extends State<CartItem> {
-  int selected = null;
+  int selected = 1;
 
-  @override
-  void initState() {
-    super.initState();
-    selected = widget.cartItem.quatity;
-  }
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   selected = widget.cartItem.quatity;
+  // }
 
   @override
   Widget build(BuildContext context) {

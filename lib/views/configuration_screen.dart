@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:gereaciando_estado/providers/product_provider.dart';
-import 'package:gereaciando_estado/widgets/Product_config_item.dart';
+import 'package:gereaciando_estado/utils/app_routes.dart';
+import 'package:gereaciando_estado/widgets/product_config_item.dart';
 import 'package:provider/provider.dart';
 import 'package:gereaciando_estado/widgets/navigation_bar.dart';
 
@@ -13,6 +14,14 @@ class ConfigurationScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text("Gerenciar Produtos"),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.add),
+            onPressed: () {
+              Navigator.of(context).pushNamed(AppRoutes.FORM_PRODUCT);
+            },
+          )
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 0),

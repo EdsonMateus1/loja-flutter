@@ -57,4 +57,12 @@ final List<ProductModal> Moke_Products = [
     imageUrl:
         'https://images-na.ssl-images-amazon.com/images/I/71uZrDPrsRL._AC_SL1500_.jpg',
   ),
+  ProductModal(
+    id: 'p8',
+    title: 'Ventilador Mondial',
+    description: 'VTX-50-8P Preto - 50 cm',
+    price: 161.91,
+    imageUrl:
+        'https://www.casasbahia-imagens.com.br/Control/ArquivoExibir.aspx?IdArquivo=1203426782',
+  ),
 ];
