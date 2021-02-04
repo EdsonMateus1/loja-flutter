@@ -25,7 +25,7 @@ class ProductModal {
       id: Random().nextDouble().toString(),
       title: map["title"],
       description: map["description"],
-      price: map["price"],
+      price: double.parse(map["price"]),
       imageUrl: map["imageUrl"],
     );
   }

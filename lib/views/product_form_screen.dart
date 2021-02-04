@@ -27,8 +27,8 @@ class _ProductFormScreenState extends State<ProductFormScreen> {
         Provider.of<ProductsProvider>(context, listen: false);
     _form.currentState.save();
     final ProductModal product = ProductModal.fromJson(_formData);
-    print(product);
     productsProvider.addProduct(product);
+    Navigator.of(context).pop();
   }
 
   @override
@@ -50,9 +50,10 @@ class _ProductFormScreenState extends State<ProductFormScreen> {
   TextFormField buildTextFormField(
     BuildContext context, {
     String labelText,
+    String chaveData,
     FocusNode focusNode,
     FocusNode actionFocusNode,
-    String chaveData,
+    TextInputType keyboardType,
     FormFieldValidator<String> validator,
   }) {
     return TextFormField(
@@ -63,6 +64,7 @@ class _ProductFormScreenState extends State<ProductFormScreen> {
       onSaved: (newValue) => _formData["$chaveData"] = newValue,
       validator: validator,
       focusNode: focusNode,
+      keyboardType: keyboardType,
     );
   }
 
@@ -102,6 +104,7 @@ class _ProductFormScreenState extends State<ProductFormScreen> {
                 actionFocusNode: _descriptionFocusNode,
                 labelText: "preco",
                 chaveData: "price",
+                keyboardType: TextInputType.numberWithOptions(decimal: true),
                 validator: (value) {
                   if (value.isEmpty) {
                     return "coloque o preco";
