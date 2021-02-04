@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:gereaciando_estado/models/product.dart';
+import 'package:gereaciando_estado/providers/product_provider.dart';
+import 'package:provider/provider.dart';
 
 class ProductFormScreen extends StatefulWidget {
   @override
@@ -10,9 +13,22 @@ class _ProductFormScreenState extends State<ProductFormScreen> {
   final _descriptionFocusNode = FocusNode();
   final _imagemFocusNode = FocusNode();
   final _imagemController = TextEditingController();
+  final _form = GlobalKey<FormState>();
+  final _formData = Map<String, dynamic>();
 
   void _updadeImgUrl() {
     setState(() {});
+  }
+
+  void _saveForm() {
+    bool isValid = _form.currentState.validate();
+    if (!isValid) return;
+    final ProductsProvider productsProvider =
+        Provider.of<ProductsProvider>(context, listen: false);
+    _form.currentState.save();
+    final ProductModal product = ProductModal.fromJson(_formData);
+    print(product);
+    productsProvider.addProduct(product);
   }
 
   @override
@@ -30,37 +46,81 @@ class _ProductFormScreenState extends State<ProductFormScreen> {
     _imagemFocusNode.dispose();
   }
 
+  // widgets builds
+  TextFormField buildTextFormField(
+    BuildContext context, {
+    String labelText,
+    FocusNode focusNode,
+    FocusNode actionFocusNode,
+    String chaveData,
+    FormFieldValidator<String> validator,
+  }) {
+    return TextFormField(
+      decoration: InputDecoration(labelText: labelText),
+      textInputAction: TextInputAction.next,
+      onFieldSubmitted: (_) =>
+          FocusScope.of(context).requestFocus(actionFocusNode),
+      onSaved: (newValue) => _formData["$chaveData"] = newValue,
+      validator: validator,
+      focusNode: focusNode,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Formulario de produtos'),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.save),
+            onPressed: _saveForm,
+          )
+        ],
       ),
       body: Container(
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
         child: Form(
+          key: _form,
           child: ListView(
             children: [
-              TextFormField(
-                decoration: InputDecoration(labelText: "Titulo"),
-                textInputAction: TextInputAction.next,
-                onFieldSubmitted: (value) =>
-                    FocusScope.of(context).requestFocus(_priceFocusNode),
+              buildTextFormField(
+                context,
+                actionFocusNode: _priceFocusNode,
+                labelText: "Titulo",
+                chaveData: "title",
+                validator: (value) {
+                  if (value.isEmpty) {
+                    return "coloque o titulo";
+                  }
+                  return null;
+                },
               ),
-              TextFormField(
-                decoration: InputDecoration(labelText: "Preco"),
-                keyboardType: TextInputType.numberWithOptions(decimal: true),
-                textInputAction: TextInputAction.next,
+              buildTextFormField(
+                context,
                 focusNode: _priceFocusNode,
-                onFieldSubmitted: (value) =>
-                    FocusScope.of(context).requestFocus(_descriptionFocusNode),
+                actionFocusNode: _descriptionFocusNode,
+                labelText: "preco",
+                chaveData: "price",
+                validator: (value) {
+                  if (value.isEmpty) {
+                    return "coloque o preco";
+                  }
+                  return null;
+                },
               ),
-              TextFormField(
-                decoration: InputDecoration(labelText: "Descricao"),
+              buildTextFormField(
+                context,
                 focusNode: _descriptionFocusNode,
-                textInputAction: TextInputAction.next,
-                onFieldSubmitted: (value) =>
-                    FocusScope.of(context).requestFocus(_imagemFocusNode),
+                actionFocusNode: _imagemFocusNode,
+                labelText: "descricao",
+                chaveData: "description",
+                validator: (value) {
+                  if (value.isEmpty) {
+                    return "coloque a descricao";
+                  }
+                  return null;
+                },
               ),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.end,
@@ -70,6 +130,8 @@ class _ProductFormScreenState extends State<ProductFormScreen> {
                       controller: _imagemController,
                       decoration: InputDecoration(labelText: "URL da imagem"),
                       focusNode: _imagemFocusNode,
+                      onSaved: (newValue) => _formData["imageUrl"] = newValue,
+                      onFieldSubmitted: (value) => _saveForm,
                     ),
                   ),
                   Container(

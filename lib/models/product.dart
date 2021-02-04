@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'dart:math';
+
 import 'package:flutter/foundation.dart';
 
 class ProductModal {
@@ -16,4 +19,14 @@ class ProductModal {
     @required this.imageUrl,
     this.isFavorite = false,
   });
+
+  factory ProductModal.fromJson(Map<String, dynamic> map) {
+    return ProductModal(
+      id: Random().nextDouble().toString(),
+      title: map["title"],
+      description: map["description"],
+      price: map["price"],
+      imageUrl: map["imageUrl"],
+    );
+  }
 }
