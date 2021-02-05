@@ -17,7 +17,17 @@ class _ProductFormScreenState extends State<ProductFormScreen> {
   final _formData = Map<String, dynamic>();
 
   void _updadeImgUrl() {
-    setState(() {});
+    if (isValidImgUrl(_imagemController.text)) {
+      setState(() {});
+    }
+  }
+
+  bool isValidImgUrl(String url) {
+    bool isValidUrl = url.toLowerCase().startsWith("http://") ||
+        url.toLowerCase().startsWith("https://");
+    bool isValidImg =
+        url.endsWith(".png") || url.endsWith(".jpg") || url.endsWith(".jpeg");
+    return isValidUrl && isValidImg;
   }
 
   void _saveForm() {
@@ -92,8 +102,11 @@ class _ProductFormScreenState extends State<ProductFormScreen> {
                 labelText: "Titulo",
                 chaveData: "title",
                 validator: (value) {
-                  if (value.isEmpty) {
-                    return "coloque o titulo";
+                  if (value.trim().isEmpty) {
+                    return "informe o titulo";
+                  }
+                  if (value.trim().length <= 3) {
+                    return "informe um nome valido";
                   }
                   return null;
                 },
@@ -107,7 +120,7 @@ class _ProductFormScreenState extends State<ProductFormScreen> {
                 keyboardType: TextInputType.numberWithOptions(decimal: true),
                 validator: (value) {
                   if (value.isEmpty) {
-                    return "coloque o preco";
+                    return "informe o preco";
                   }
                   return null;
                 },
@@ -120,7 +133,7 @@ class _ProductFormScreenState extends State<ProductFormScreen> {
                 chaveData: "description",
                 validator: (value) {
                   if (value.isEmpty) {
-                    return "coloque a descricao";
+                    return "informe a descricao";
                   }
                   return null;
                 },
@@ -134,7 +147,16 @@ class _ProductFormScreenState extends State<ProductFormScreen> {
                       decoration: InputDecoration(labelText: "URL da imagem"),
                       focusNode: _imagemFocusNode,
                       onSaved: (newValue) => _formData["imageUrl"] = newValue,
-                      onFieldSubmitted: (value) => _saveForm,
+                      onFieldSubmitted: (_) => _saveForm,
+                      validator: (value) {
+                        if (value.isEmpty) {
+                          return "informe um URL";
+                        }
+                        if (!isValidImgUrl(value)) {
+                          return "informe uma URL valida";
+                        }
+                        return null;
+                      },
                     ),
                   ),
                   Container(

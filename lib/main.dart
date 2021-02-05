@@ -1,6 +1,7 @@
 import 'package:gereaciando_estado/providers/cart_provider.dart';
 import 'package:gereaciando_estado/providers/order_provider.dart';
 import 'package:gereaciando_estado/providers/product_provider.dart';
+import 'package:gereaciando_estado/repositories/repository_protocol.dart';
 import 'package:gereaciando_estado/views/cart_screen.dart';
 import 'package:gereaciando_estado/views/configuration_screen.dart';
 import 'package:gereaciando_estado/views/order_screen.dart';
@@ -20,7 +21,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => ProductsProvider()),
+        ChangeNotifierProvider(
+          create: (_) => ProductsProvider(),
+        ),
         ChangeNotifierProvider(create: (_) => CartProvider()),
         ChangeNotifierProvider(create: (_) => OrderProvider()),
       ],
