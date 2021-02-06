@@ -1,16 +1,15 @@
-import 'package:gereaciando_estado/providers/cart_provider.dart';
-import 'package:gereaciando_estado/providers/order_provider.dart';
-import 'package:gereaciando_estado/providers/product_provider.dart';
-import 'package:gereaciando_estado/repositories/repository_protocol.dart';
-import 'package:gereaciando_estado/views/cart_screen.dart';
-import 'package:gereaciando_estado/views/configuration_screen.dart';
-import 'package:gereaciando_estado/views/order_screen.dart';
-import 'package:gereaciando_estado/views/product_form_screen.dart';
+import 'package:gereaciando_estado/presenter/providers/cart_provider.dart';
+import 'package:gereaciando_estado/presenter/providers/order_provider.dart';
+import 'package:gereaciando_estado/presenter/providers/product_provider.dart';
+import 'package:gereaciando_estado/view/pages/cart_screen.dart';
+import 'package:gereaciando_estado/view/pages/configuration_screen.dart';
+import 'package:gereaciando_estado/view/pages/order_screen.dart';
+import 'package:gereaciando_estado/view/pages/product_detail_screen.dart';
+import 'package:gereaciando_estado/view/pages/product_form_screen.dart';
+import 'package:gereaciando_estado/view/pages/product_overview_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:gereaciando_estado/utils/app_routes.dart';
-import 'package:gereaciando_estado/views/product_detail_screen.dart';
-import 'package:gereaciando_estado/views/product_overview_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -21,9 +20,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(
-          create: (_) => ProductsProvider(),
-        ),
+        ChangeNotifierProvider(create: (_) => ProductsProvider()),
         ChangeNotifierProvider(create: (_) => CartProvider()),
         ChangeNotifierProvider(create: (_) => OrderProvider()),
       ],
@@ -78,7 +75,7 @@ class MyApp extends StatelessWidget {
           AppRoutes.CART: (ctx) => CartScreen(),
           AppRoutes.ORDER: (ctx) => OrderScreen(),
           AppRoutes.CONFIGURATION: (ctx) => ConfigurationScreen(),
-          AppRoutes.FORM_PRODUCT: (ctx) => ProductFormScreen(),
+          AppRoutes.REGISTER_PRODUCT: (ctx) => ProductFormScreen(),
         },
       ),
     );

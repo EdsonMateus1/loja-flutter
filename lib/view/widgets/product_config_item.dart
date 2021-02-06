@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gereaciando_estado/models/product.dart';
+import 'package:gereaciando_estado/utils/app_routes.dart';
 
 class ProductConfigItem extends StatelessWidget {
   const ProductConfigItem({
@@ -34,7 +35,12 @@ class ProductConfigItem extends StatelessWidget {
               IconButton(
                 icon: Icon(Icons.edit),
                 color: Theme.of(context).accentColor,
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).pushNamed(
+                    AppRoutes.REGISTER_PRODUCT,
+                    arguments: products,
+                  );
+                },
               ),
               IconButton(
                 icon: Icon(Icons.delete),

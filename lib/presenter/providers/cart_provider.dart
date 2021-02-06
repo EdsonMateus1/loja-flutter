@@ -27,6 +27,7 @@ class CartProvider with ChangeNotifier {
     _cardItems.forEach((key, value) {
       if (value.id == cartItem.id) {
         value.quatity = newQuatity;
+        return;
       }
     });
     notifyListeners();

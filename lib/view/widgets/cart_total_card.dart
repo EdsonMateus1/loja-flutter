@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:gereaciando_estado/models/cart_item_modal.dart';
-import 'package:gereaciando_estado/providers/cart_provider.dart';
-import 'package:gereaciando_estado/providers/order_provider.dart';
+import 'package:gereaciando_estado/presenter/providers/cart_provider.dart';
+import 'package:gereaciando_estado/presenter/providers/order_provider.dart';
 import 'package:provider/provider.dart';
 
 class CardTotal extends StatelessWidget {

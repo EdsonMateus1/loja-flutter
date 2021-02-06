@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:gereaciando_estado/models/cart_item_modal.dart';
-import 'package:gereaciando_estado/providers/cart_provider.dart';
-import 'package:gereaciando_estado/widgets/alert_confirme_delete.dart';
+import 'package:gereaciando_estado/presenter/providers/cart_provider.dart';
 import 'package:provider/provider.dart';
-import 'package:gereaciando_estado/providers/product_provider.dart';
+
+import 'alert_confirme_delete.dart';
 
 class CartItem extends StatefulWidget {
   final CartItemModal cartItem;
@@ -17,11 +17,11 @@ class CartItem extends StatefulWidget {
 class _CartItemState extends State<CartItem> {
   int selected = 1;
 
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   selected = widget.cartItem.quatity;
-  // }
+  @override
+  void initState() {
+    super.initState();
+    selected = widget.cartItem.quatity;
+  }
 
   @override
   Widget build(BuildContext context) {

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:gereaciando_estado/providers/cart_provider.dart';
-import 'package:gereaciando_estado/providers/product_provider.dart';
-import 'package:gereaciando_estado/widgets/banner_carrusel.dart';
-import 'package:gereaciando_estado/widgets/cart_badge.dart';
-import 'package:gereaciando_estado/widgets/navigation_bar.dart';
-import 'package:gereaciando_estado/widgets/product_grid.dart';
+import 'package:gereaciando_estado/presenter/providers/cart_provider.dart';
+import 'package:gereaciando_estado/presenter/providers/product_provider.dart';
+import 'package:gereaciando_estado/view/widgets/banner_carrusel.dart';
+import 'package:gereaciando_estado/view/widgets/cart_badge.dart';
+import 'package:gereaciando_estado/view/widgets/navigation_bar.dart';
+import 'package:gereaciando_estado/view/widgets/product_grid.dart';
 import 'package:provider/provider.dart';
 
 class ProductOverviewScreen extends StatelessWidget {

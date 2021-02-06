@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:gereaciando_estado/providers/product_provider.dart';
+import 'package:gereaciando_estado/presenter/providers/product_provider.dart';
 import 'package:gereaciando_estado/utils/app_routes.dart';
-import 'package:gereaciando_estado/widgets/product_config_item.dart';
+import 'package:gereaciando_estado/view/widgets/navigation_bar.dart';
+import 'package:gereaciando_estado/view/widgets/product_config_item.dart';
 import 'package:provider/provider.dart';
-import 'package:gereaciando_estado/widgets/navigation_bar.dart';
 
 class ConfigurationScreen extends StatelessWidget {
   @override
@@ -18,7 +18,7 @@ class ConfigurationScreen extends StatelessWidget {
           IconButton(
             icon: Icon(Icons.add),
             onPressed: () {
-              Navigator.of(context).pushNamed(AppRoutes.FORM_PRODUCT);
+              Navigator.of(context).pushNamed(AppRoutes.REGISTER_PRODUCT);
             },
           )
         ],

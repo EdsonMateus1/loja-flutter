@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:gereaciando_estado/models/product.dart';
-import 'package:gereaciando_estado/providers/cart_provider.dart';
-import 'package:gereaciando_estado/providers/product_provider.dart';
+import 'package:gereaciando_estado/presenter/providers/cart_provider.dart';
+import 'package:gereaciando_estado/presenter/providers/product_provider.dart';
 import 'package:gereaciando_estado/utils/app_routes.dart';
-import 'package:gereaciando_estado/widgets/alert_add_cart.dart';
 import 'package:provider/provider.dart';
+
+import 'alert_add_cart.dart';
 
 class ProductItem extends StatelessWidget {
   final ProductModal product;

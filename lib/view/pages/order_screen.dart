@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:gereaciando_estado/providers/order_provider.dart';
-import 'package:gereaciando_estado/widgets/navigation_bar.dart';
-import 'package:gereaciando_estado/widgets/order_item.dart';
+import 'package:gereaciando_estado/presenter/providers/order_provider.dart';
+import 'package:gereaciando_estado/view/widgets/navigation_bar.dart';
+import 'package:gereaciando_estado/view/widgets/order_item.dart';
 import 'package:provider/provider.dart';
 
 class OrderScreen extends StatelessWidget {

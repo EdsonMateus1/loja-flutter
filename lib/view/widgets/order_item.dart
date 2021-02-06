@@ -56,13 +56,7 @@ class _OrderItemState extends State<OrderItem> {
         ),
       ),
       if (_expanded)
-        SizedBox(
-          height: 20,
-        ),
-      AnimatedContainer(
-        duration: Duration(milliseconds: 200),
-        height: _expanded ? _products.length * 90.0 : 0,
-        child: Column(
+        Column(
           children: _products.map(
             (products) {
               return Padding(
@@ -101,7 +95,6 @@ class _OrderItemState extends State<OrderItem> {
             },
           ).toList(),
         ),
-      )
     ]);
   }
 }

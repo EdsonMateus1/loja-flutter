@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gereaciando_estado/data/data_product.dart';
 import 'package:gereaciando_estado/models/product.dart';
-import 'package:gereaciando_estado/repositories/repository_protocol.dart';
-import '../data/data_product.dart';
 
 class ProductsProvider with ChangeNotifier {
   List<ProductModal> _products = Moke_Products;
@@ -26,6 +24,16 @@ class ProductsProvider with ChangeNotifier {
 
   void addProduct(ProductModal product) {
     _products.add(product);
+    notifyListeners();
+  }
+
+  void updateProduct(ProductModal productModal) {
+    _products.forEach((product) {
+      if (product.id == productModal.id) {
+        product = productModal;
+        return;
+      }
+    });
     notifyListeners();
   }
 

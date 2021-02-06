@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:gereaciando_estado/controllers/pruduct_form_screem_controller.dart';
 import 'package:gereaciando_estado/models/product.dart';
-import 'package:gereaciando_estado/providers/product_provider.dart';
-import 'package:provider/provider.dart';
+import 'package:gereaciando_estado/presenter/controllers/pruduct_form_screem_controller.dart';
 
 class ProductFormScreen extends StatefulWidget {
   @override
@@ -33,30 +31,10 @@ class _ProductFormScreenState extends State<ProductFormScreen> {
     super.dispose();
   }
 
-  // widgets builds
-  TextFormField buildTextFormField(
-    BuildContext context, {
-    String labelText,
-    String chaveData,
-    FocusNode focusNode,
-    FocusNode actionFocusNode,
-    TextInputType keyboardType,
-    FormFieldValidator<String> validator,
-  }) {
-    return TextFormField(
-      decoration: InputDecoration(labelText: labelText),
-      textInputAction: TextInputAction.next,
-      onFieldSubmitted: (_) =>
-          FocusScope.of(context).requestFocus(actionFocusNode),
-      onSaved: (newValue) => controller.formData["$chaveData"] = newValue,
-      validator: validator,
-      focusNode: focusNode,
-      keyboardType: keyboardType,
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
+    ProductModal product =
+        ModalRoute.of(context).settings.arguments as ProductModal;
     return Scaffold(
       appBar: AppBar(
         title: Text('Formulario de produtos'),
@@ -78,11 +56,11 @@ class _ProductFormScreenState extends State<ProductFormScreen> {
                 actionFocusNode: controller.priceFocusNode,
                 labelText: "Titulo",
                 chaveData: "title",
+                initialValue: product == null ? "" : product.title,
                 validator: (value) {
                   if (value.trim().isEmpty) {
                     return "informe o titulo";
-                  }
-                  if (value.trim().length <= 3) {
+                  } else if (value.trim().length <= 3) {
                     return "informe um nome valido";
                   }
                   return null;
@@ -94,10 +72,13 @@ class _ProductFormScreenState extends State<ProductFormScreen> {
                 actionFocusNode: controller.descriptionFocusNode,
                 labelText: "preco",
                 chaveData: "price",
+                initialValue: product == null ? "" : product.price.toString(),
                 keyboardType: TextInputType.numberWithOptions(decimal: true),
                 validator: (value) {
                   if (value.isEmpty) {
                     return "informe o preco";
+                  } else if (double.parse(value) <= 0) {
+                    return "informe um preco maior que zero";
                   }
                   return null;
                 },
@@ -108,6 +89,9 @@ class _ProductFormScreenState extends State<ProductFormScreen> {
                 actionFocusNode: controller.imagemFocusNode,
                 labelText: "descricao",
                 chaveData: "description",
+                initialValue: product == null ? "" : product.description,
+                maxLines: 1,
+                keyboardType: TextInputType.multiline,
                 validator: (value) {
                   if (value.isEmpty) {
                     return "informe a descricao";
@@ -127,6 +111,7 @@ class _ProductFormScreenState extends State<ProductFormScreen> {
                           controller.formData["imageUrl"] = newValue,
                       onFieldSubmitted: (_) =>
                           () => controller.saveForm(context),
+                      initialValue: product == null ? "" : product.imageUrl,
                       validator: (value) {
                         if (value.isEmpty) {
                           return "informe um URL";
@@ -151,7 +136,7 @@ class _ProductFormScreenState extends State<ProductFormScreen> {
                     ),
                     child: controller.imagemController.text.isEmpty
                         ? Text("Informe a URL")
-                        : FittedBox(
+                        : Container(
                             child: Image.network(
                               controller.imagemController.text,
                               fit: BoxFit.contain,
@@ -164,6 +149,32 @@ class _ProductFormScreenState extends State<ProductFormScreen> {
           ),
         ),
       ),
+    );
+  }
+
+  // widgets builds
+  TextFormField buildTextFormField(
+    BuildContext context, {
+    String labelText,
+    String chaveData,
+    FocusNode focusNode,
+    FocusNode actionFocusNode,
+    TextInputType keyboardType,
+    int maxLines,
+    String initialValue,
+    FormFieldValidator<String> validator,
+  }) {
+    return TextFormField(
+      decoration: InputDecoration(labelText: labelText),
+      textInputAction: TextInputAction.next,
+      onFieldSubmitted: (_) =>
+          FocusScope.of(context).requestFocus(actionFocusNode),
+      onSaved: (newValue) => controller.formData["$chaveData"] = newValue,
+      validator: validator,
+      focusNode: focusNode,
+      keyboardType: keyboardType,
+      maxLines: maxLines,
+      initialValue: initialValue,
     );
   }
 }
