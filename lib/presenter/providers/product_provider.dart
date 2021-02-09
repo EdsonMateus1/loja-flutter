@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:gereaciando_estado/data/data_product.dart';
 import 'package:gereaciando_estado/models/product.dart';
+import 'package:gereaciando_estado/moke_data/data_product.dart';
 
 class ProductsProvider with ChangeNotifier {
   List<ProductModal> _products = Moke_Products;
@@ -28,12 +28,23 @@ class ProductsProvider with ChangeNotifier {
   }
 
   void updateProduct(ProductModal productModal) {
-    _products.forEach((product) {
-      if (product.id == productModal.id) {
-        product = productModal;
-        return;
-      }
-    });
+    final index = _products.indexWhere((prod) => prod.id == productModal.id);
+    if (index >= 0) {
+      _products[index] = productModal;
+      notifyListeners();
+    }
+
+    // _products.forEach((product) {
+    //   if (product.id == productModal.id) {
+    //     product = productModal;
+    //     notifyListeners();
+    //   }
+    // });
+    // notifyListeners();
+  }
+
+  void removeProduct(ProductModal product) {
+    _products.removeWhere((prod) => prod.id == product.id);
     notifyListeners();
   }
 

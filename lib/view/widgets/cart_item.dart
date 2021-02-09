@@ -117,7 +117,12 @@ class _CartItemState extends State<CartItem> {
                     showDialog(
                       context: context,
                       builder: (context) {
-                        return AlertConfirmeDelete(widget.cartItem);
+                        return AlertConfirmeDelete<CartItemModal>(
+                          remove: cartProvider.removeCartItem,
+                          item: widget.cartItem,
+                          msg:
+                              "Tem certeza que deseja remover esse item do seu carrinho?",
+                        );
                       },
                     );
                   },

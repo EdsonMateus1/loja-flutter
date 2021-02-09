@@ -3,27 +3,28 @@ import 'package:gereaciando_estado/models/cart_item_modal.dart';
 import 'package:gereaciando_estado/presenter/providers/cart_provider.dart';
 import 'package:provider/provider.dart';
 
-class AlertConfirmeDelete extends StatelessWidget {
-  final CartItemModal cartItem;
+class AlertConfirmeDelete<T> extends StatelessWidget {
+  final T item;
+  final String msg;
+  final void Function(T) remove;
 
-  const AlertConfirmeDelete(this.cartItem);
+  const AlertConfirmeDelete({this.item, this.remove, this.msg});
   @override
   Widget build(BuildContext context) {
-    final CartProvider cartProvider = Provider.of<CartProvider>(context);
     return AlertDialog(
       actions: [
-        TextButton(
-          onPressed: () {
-            cartProvider.removeCartItem(cartItem);
-            Navigator.of(context).pop();
-          },
-          child: Text("Sim"),
-        ),
         TextButton(
           onPressed: () {
             Navigator.of(context).pop();
           },
           child: Text("Nao"),
+        ),
+        TextButton(
+          onPressed: () {
+            remove(item);
+            Navigator.of(context).pop();
+          },
+          child: Text("Sim"),
         ),
       ],
       title: Text(
@@ -34,7 +35,7 @@ class AlertConfirmeDelete extends StatelessWidget {
         ),
       ),
       content: Text(
-        "Tem certeza que deseja remover esse item do seu carrinho?",
+        msg,
         style: TextStyle(
           fontSize: 17,
           fontFamily: "Lato",

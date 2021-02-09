@@ -5,7 +5,7 @@ import 'package:flutter/foundation.dart';
 
 class ProductModal {
   final String id;
-  final String title;
+   String title;
   final String description;
   final double price;
   final String imageUrl;
@@ -22,11 +22,11 @@ class ProductModal {
 
   factory ProductModal.fromJson(Map<String, dynamic> map) {
     return ProductModal(
-      id: Random().nextDouble().toString(),
-      title: map["title"],
-      description: map["description"],
+      id: map["id"],
+      title: map["title"].toString(),
+      description: map["description"].toString(),
       price: double.parse(map["price"]),
-      imageUrl: map["imageUrl"],
+      imageUrl: map["imageUrl"].toString(),
     );
   }
 }

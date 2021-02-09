@@ -25,9 +25,15 @@ class PruductFormScreemController {
     final ProductsProvider productsProvider =
         Provider.of<ProductsProvider>(context, listen: false);
     formKey.currentState.save();
-    print(formData);
+
     final ProductModal product = ProductModal.fromJson(formData);
-    productsProvider.addProduct(product);
+
+    if (formData["id"] == null) {
+      productsProvider.addProduct(product);
+    } else {
+      productsProvider.updateProduct(product);
+    }
+
     Navigator.of(context).pop();
   }
 }

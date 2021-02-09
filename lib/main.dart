@@ -1,3 +1,4 @@
+import 'package:gereaciando_estado/presenter/controllers/pruduct_form_screem_controller.dart';
 import 'package:gereaciando_estado/presenter/providers/cart_provider.dart';
 import 'package:gereaciando_estado/presenter/providers/order_provider.dart';
 import 'package:gereaciando_estado/presenter/providers/product_provider.dart';
@@ -75,7 +76,9 @@ class MyApp extends StatelessWidget {
           AppRoutes.CART: (ctx) => CartScreen(),
           AppRoutes.ORDER: (ctx) => OrderScreen(),
           AppRoutes.CONFIGURATION: (ctx) => ConfigurationScreen(),
-          AppRoutes.REGISTER_PRODUCT: (ctx) => ProductFormScreen(),
+          AppRoutes.REGISTER_PRODUCT: (ctx) => ProductFormScreen(
+                controller: PruductFormScreemController(),
+              ),
         },
       ),
     );
