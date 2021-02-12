@@ -11,7 +11,6 @@ class ProductFormScreen extends StatefulWidget {
 
 class _ProductFormScreenState extends State<ProductFormScreen> {
   PruductFormScreemController _controller;
-  final formData = Map<String, dynamic>();
 
   void initForm() {
     if (_controller.formData.isEmpty) {
@@ -44,6 +43,10 @@ class _ProductFormScreenState extends State<ProductFormScreen> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
+    //didChangeDependencies , initForm e chamado aqui pois
+    //temos um contexto associado a esse widget ja criado
+    // no initState nao temos um contexto criado, pois o initState
+    // e chamando antes da criacao de um estado e consequentimete de um contexto
     initForm();
   }
 

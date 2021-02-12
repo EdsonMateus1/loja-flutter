@@ -32,6 +32,7 @@ class ProductOverviewScreen extends StatelessWidget {
               )
             ],
           ),
+          // Consumer so ira rederizar do Consumer para baixo , nao executando coisas desnecessarias
           Consumer<CartProvider>(
             child: Container(
               width: 45,

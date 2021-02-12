@@ -28,6 +28,8 @@ class ProductsProvider with ChangeNotifier {
   }
 
   void updateProduct(ProductModal productModal) {
+    // indexWhere retornar o index no array do elemento que passar pela condicao
+    // se nao for encontrado retonar -1
     final index = _products.indexWhere((prod) => prod.id == productModal.id);
     if (index >= 0) {
       _products[index] = productModal;

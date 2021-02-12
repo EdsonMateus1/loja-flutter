@@ -6,10 +6,10 @@ import 'package:provider/provider.dart';
 class PruductFormScreemController {
   final formKey = GlobalKey<FormState>();
   final formData = Map<String, dynamic>();
+  final imagemController = TextEditingController();
   final priceFocusNode = FocusNode();
   final descriptionFocusNode = FocusNode();
   final imagemFocusNode = FocusNode();
-  final imagemController = TextEditingController();
 
   bool isValidImgUrl(String url) {
     bool isValidUrl = url.toLowerCase().startsWith("http://") ||
@@ -22,10 +22,12 @@ class PruductFormScreemController {
   void saveForm(context) {
     bool isValid = formKey.currentState.validate();
     if (!isValid) return;
+
     final ProductsProvider productsProvider =
         Provider.of<ProductsProvider>(context, listen: false);
-    formKey.currentState.save();
 
+    // realiza um loop chamando todas as funcoes onSaved que estao nos TextFormField do formulario
+    formKey.currentState.save();
     final ProductModal product = ProductModal.fromJson(formData);
 
     if (formData["id"] == null) {
