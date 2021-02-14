@@ -14,9 +14,9 @@ class _ProductFormScreenState extends State<ProductFormScreen> {
   final formKey = GlobalKey<FormState>();
   final formData = Map<String, dynamic>();
   final imagemController = TextEditingController();
-  final priceFocusNode = FocusNode();
-  final descriptionFocusNode = FocusNode();
-  final imagemFocusNode = FocusNode();
+  FocusNode priceFocusNode;
+  FocusNode descriptionFocusNode;
+  FocusNode imagemFocusNode;
 
   void initForm() {
     if (formData.isEmpty) {
@@ -50,6 +50,9 @@ class _ProductFormScreenState extends State<ProductFormScreen> {
   @override
   void initState() {
     super.initState();
+    priceFocusNode = FocusNode();
+    descriptionFocusNode = FocusNode();
+    imagemFocusNode = FocusNode();
     addProduct = widget.addProduct;
     imagemFocusNode.addListener(updadeImgUrl);
   }

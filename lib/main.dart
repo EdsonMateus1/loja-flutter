@@ -1,4 +1,4 @@
-import 'package:gereaciando_estado/presenter/controllers/pruduct_form_screem_controller.dart';
+import 'package:gereaciando_estado/presenter/controller/pruduct_form_screem_controller.dart';
 import 'package:gereaciando_estado/presenter/providers/cart_provider.dart';
 import 'package:gereaciando_estado/presenter/providers/order_provider.dart';
 import 'package:gereaciando_estado/presenter/providers/product_provider.dart';
