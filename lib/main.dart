@@ -76,9 +76,8 @@ class MyApp extends StatelessWidget {
           AppRoutes.CART: (ctx) => CartScreen(),
           AppRoutes.ORDER: (ctx) => OrderScreen(),
           AppRoutes.CONFIGURATION: (ctx) => ConfigurationScreen(),
-          AppRoutes.REGISTER_PRODUCT: (ctx) => ProductFormScreen(
-                controller: PruductFormScreemController(),
-              ),
+          AppRoutes.REGISTER_PRODUCT: (ctx) =>
+              ProductFormScreen(controller: PruductFormScreemController()),
         },
       ),
     );

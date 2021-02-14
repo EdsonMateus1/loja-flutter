@@ -4,13 +4,6 @@ import 'package:gereaciando_estado/presenter/providers/product_provider.dart';
 import 'package:provider/provider.dart';
 
 class PruductFormScreemController {
-  final formKey = GlobalKey<FormState>();
-  final formData = Map<String, dynamic>();
-  final imagemController = TextEditingController();
-  final priceFocusNode = FocusNode();
-  final descriptionFocusNode = FocusNode();
-  final imagemFocusNode = FocusNode();
-
   bool isValidImgUrl(String url) {
     bool isValidUrl = url.toLowerCase().startsWith("http://") ||
         url.toLowerCase().startsWith("https://");
@@ -19,7 +12,7 @@ class PruductFormScreemController {
     return isValidUrl && isValidImg;
   }
 
-  void saveForm(context) {
+  void saveForm({context, formKey, formData}) {
     bool isValid = formKey.currentState.validate();
     if (!isValid) return;
 
@@ -35,7 +28,6 @@ class PruductFormScreemController {
     } else {
       productsProvider.updateProduct(product);
     }
-
     Navigator.of(context).pop();
   }
 }

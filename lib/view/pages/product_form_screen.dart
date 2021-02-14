@@ -11,24 +11,30 @@ class ProductFormScreen extends StatefulWidget {
 
 class _ProductFormScreenState extends State<ProductFormScreen> {
   PruductFormScreemController _controller;
+  final formKey = GlobalKey<FormState>();
+  final formData = Map<String, dynamic>();
+  final imagemController = TextEditingController();
+  final priceFocusNode = FocusNode();
+  final descriptionFocusNode = FocusNode();
+  final imagemFocusNode = FocusNode();
 
   void initForm() {
-    if (_controller.formData.isEmpty) {
+    if (formData.isEmpty) {
       final ProductModal product =
           ModalRoute.of(context).settings.arguments as ProductModal;
       if (product != null) {
-        _controller.formData["id"] = product.id;
-        _controller.formData["title"] = product.title;
-        _controller.formData["description"] = product.description;
-        _controller.formData["price"] = product.price.toString();
-        _controller.imagemController.text = product.imageUrl;
+        formData["id"] = product.id;
+        formData["title"] = product.title;
+        formData["description"] = product.description;
+        formData["price"] = product.price.toString();
+        imagemController.text = product.imageUrl;
       }
     }
   }
 
   // regra de UI
   void updadeImgUrl() {
-    if (_controller.isValidImgUrl(_controller.imagemController.text)) {
+    if (_controller.isValidImgUrl(imagemController.text)) {
       setState(() {});
     }
   }
@@ -37,7 +43,7 @@ class _ProductFormScreenState extends State<ProductFormScreen> {
   void initState() {
     super.initState();
     _controller = widget.controller;
-    _controller.imagemFocusNode.addListener(updadeImgUrl);
+    imagemFocusNode.addListener(updadeImgUrl);
   }
 
   @override
@@ -52,10 +58,10 @@ class _ProductFormScreenState extends State<ProductFormScreen> {
 
   @override
   void dispose() {
-    _controller.priceFocusNode.dispose();
-    _controller.descriptionFocusNode.dispose();
-    _controller.imagemFocusNode.dispose();
-    _controller.imagemFocusNode.removeListener(updadeImgUrl);
+    priceFocusNode.dispose();
+    descriptionFocusNode.dispose();
+    imagemFocusNode.dispose();
+    imagemFocusNode.removeListener(updadeImgUrl);
     super.dispose();
   }
 
@@ -67,22 +73,26 @@ class _ProductFormScreenState extends State<ProductFormScreen> {
         actions: [
           IconButton(
             icon: Icon(Icons.save),
-            onPressed: () => _controller.saveForm(context),
+            onPressed: () => _controller.saveForm(
+              context: context,
+              formData: formData,
+              formKey: formKey,
+            ),
           )
         ],
       ),
       body: Container(
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
         child: Form(
-          key: _controller.formKey,
+          key: formKey,
           child: ListView(
             children: [
               buildTextFormField(
                 context,
-                actionFocusNode: _controller.priceFocusNode,
+                actionFocusNode: priceFocusNode,
                 labelText: "Titulo",
                 chaveData: "title",
-                initialValue: _controller.formData["title"],
+                initialValue: formData["title"],
                 validator: (value) {
                   if (value.trim().isEmpty) {
                     return "informe o titulo";
@@ -94,11 +104,11 @@ class _ProductFormScreenState extends State<ProductFormScreen> {
               ),
               buildTextFormField(
                 context,
-                focusNode: _controller.priceFocusNode,
-                actionFocusNode: _controller.descriptionFocusNode,
+                focusNode: priceFocusNode,
+                actionFocusNode: descriptionFocusNode,
                 labelText: "preco",
                 chaveData: "price",
-                initialValue: _controller.formData["price"],
+                initialValue: formData["price"],
                 keyboardType: TextInputType.numberWithOptions(decimal: true),
                 validator: (value) {
                   if (value.isEmpty) {
@@ -111,11 +121,11 @@ class _ProductFormScreenState extends State<ProductFormScreen> {
               ),
               buildTextFormField(
                 context,
-                focusNode: _controller.descriptionFocusNode,
-                actionFocusNode: _controller.imagemFocusNode,
+                focusNode: descriptionFocusNode,
+                actionFocusNode: imagemFocusNode,
                 labelText: "descricao",
                 chaveData: "description",
-                initialValue: _controller.formData["description"],
+                initialValue: formData["description"],
                 maxLines: 1,
                 keyboardType: TextInputType.multiline,
                 validator: (value) {
@@ -130,12 +140,15 @@ class _ProductFormScreenState extends State<ProductFormScreen> {
                 children: [
                   Expanded(
                     child: TextFormField(
-                      controller: _controller.imagemController,
+                      controller: imagemController,
                       decoration: InputDecoration(labelText: "URL da imagem"),
-                      focusNode: _controller.imagemFocusNode,
-                      onSaved: (newValue) =>
-                          _controller.formData["imageUrl"] = newValue,
-                      onFieldSubmitted: (_) => _controller.saveForm(context),
+                      focusNode: imagemFocusNode,
+                      onSaved: (newValue) => formData["imageUrl"] = newValue,
+                      onFieldSubmitted: (_) => _controller.saveForm(
+                        context: context,
+                        formData: formData,
+                        formKey: formKey,
+                      ),
                       validator: (value) {
                         if (value.isEmpty) {
                           return "informe um URL";
@@ -158,11 +171,11 @@ class _ProductFormScreenState extends State<ProductFormScreen> {
                         width: 1,
                       ),
                     ),
-                    child: _controller.imagemController.text.isEmpty
+                    child: imagemController.text.isEmpty
                         ? Text("Informe a URL")
                         : Container(
                             child: Image.network(
-                              _controller.imagemController.text,
+                              imagemController.text,
                               fit: BoxFit.contain,
                             ),
                           ),
@@ -193,7 +206,7 @@ class _ProductFormScreenState extends State<ProductFormScreen> {
       textInputAction: TextInputAction.next,
       onFieldSubmitted: (_) =>
           FocusScope.of(context).requestFocus(actionFocusNode),
-      onSaved: (newValue) => _controller.formData["$chaveData"] = newValue,
+      onSaved: (newValue) => formData["$chaveData"] = newValue,
       validator: validator,
       focusNode: focusNode,
       keyboardType: keyboardType,
