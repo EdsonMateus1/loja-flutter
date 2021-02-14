@@ -1,7 +1,7 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:gereaciando_estado/models/cart_item_modal.dart';
-import 'package:gereaciando_estado/models/product.dart';
+import 'package:gereaciando_estado/domain/entities/cart_item_modal.dart';
+import 'package:gereaciando_estado/domain/entities/product.dart';
 
 //mixins
 class CartProvider with ChangeNotifier {

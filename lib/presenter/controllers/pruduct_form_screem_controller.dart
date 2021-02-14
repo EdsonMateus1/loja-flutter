@@ -1,17 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:gereaciando_estado/models/product.dart';
+import 'package:gereaciando_estado/data/datasource/data_add_product.dart';
+import 'package:gereaciando_estado/domain/entities/product.dart';
 import 'package:gereaciando_estado/presenter/providers/product_provider.dart';
 import 'package:provider/provider.dart';
 
-class PruductFormScreemController {
-  bool isValidImgUrl(String url) {
-    bool isValidUrl = url.toLowerCase().startsWith("http://") ||
-        url.toLowerCase().startsWith("https://");
-    bool isValidImg =
-        url.endsWith(".png") || url.endsWith(".jpg") || url.endsWith(".jpeg");
-    return isValidUrl && isValidImg;
-  }
-
+class PruductFormScreemController implements DataAddProduct {
   void saveForm({context, formKey, formData}) {
     bool isValid = formKey.currentState.validate();
     if (!isValid) return;

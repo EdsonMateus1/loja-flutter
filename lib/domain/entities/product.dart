@@ -1,11 +1,8 @@
-import 'dart:convert';
-import 'dart:math';
-
 import 'package:flutter/foundation.dart';
 
 class ProductModal {
   final String id;
-   String title;
+  String title;
   final String description;
   final double price;
   final String imageUrl;

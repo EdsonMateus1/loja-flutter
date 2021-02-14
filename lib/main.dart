@@ -12,6 +12,8 @@ import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:gereaciando_estado/utils/app_routes.dart';
 
+import 'data/usercases/remote_add_product.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -76,8 +78,11 @@ class MyApp extends StatelessWidget {
           AppRoutes.CART: (ctx) => CartScreen(),
           AppRoutes.ORDER: (ctx) => OrderScreen(),
           AppRoutes.CONFIGURATION: (ctx) => ConfigurationScreen(),
-          AppRoutes.REGISTER_PRODUCT: (ctx) =>
-              ProductFormScreen(controller: PruductFormScreemController()),
+          AppRoutes.REGISTER_PRODUCT: (ctx) => ProductFormScreen(
+                RemoteAddProduct(
+                  PruductFormScreemController(),
+                ),
+              ),
         },
       ),
     );

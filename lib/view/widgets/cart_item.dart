@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gereaciando_estado/models/cart_item_modal.dart';
+import 'package:gereaciando_estado/domain/entities/cart_item_modal.dart';
 import 'package:gereaciando_estado/presenter/providers/cart_provider.dart';
 import 'package:provider/provider.dart';
 

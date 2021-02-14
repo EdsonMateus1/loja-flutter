@@ -1,4 +1,4 @@
-import 'package:gereaciando_estado/models/cart_item_modal.dart';
+import 'package:gereaciando_estado/domain/entities/cart_item_modal.dart';
 
 class OrderModal {
   final String id;

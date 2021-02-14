@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:gereaciando_estado/models/product.dart';
-import 'package:gereaciando_estado/presenter/controllers/pruduct_form_screem_controller.dart';
+import 'package:gereaciando_estado/domain/entities/product.dart';
+import 'package:gereaciando_estado/domain/usecases/add_product.dart';
 
 class ProductFormScreen extends StatefulWidget {
-  final PruductFormScreemController controller;
-  const ProductFormScreen({@required this.controller});
+  final AddProduct addProduct;
+  const ProductFormScreen(this.addProduct);
   @override
   _ProductFormScreenState createState() => _ProductFormScreenState();
 }
 
 class _ProductFormScreenState extends State<ProductFormScreen> {
-  PruductFormScreemController _controller;
+  AddProduct addProduct;
   final formKey = GlobalKey<FormState>();
   final formData = Map<String, dynamic>();
   final imagemController = TextEditingController();
@@ -33,8 +33,16 @@ class _ProductFormScreenState extends State<ProductFormScreen> {
   }
 
   // regra de UI
+  bool isValidImgUrl(String url) {
+    bool isValidUrl = url.toLowerCase().startsWith("http://") ||
+        url.toLowerCase().startsWith("https://");
+    bool isValidImg =
+        url.endsWith(".png") || url.endsWith(".jpg") || url.endsWith(".jpeg");
+    return isValidUrl && isValidImg;
+  }
+
   void updadeImgUrl() {
-    if (_controller.isValidImgUrl(imagemController.text)) {
+    if (isValidImgUrl(imagemController.text)) {
       setState(() {});
     }
   }
@@ -42,7 +50,7 @@ class _ProductFormScreenState extends State<ProductFormScreen> {
   @override
   void initState() {
     super.initState();
-    _controller = widget.controller;
+    addProduct = widget.addProduct;
     imagemFocusNode.addListener(updadeImgUrl);
   }
 
@@ -73,7 +81,7 @@ class _ProductFormScreenState extends State<ProductFormScreen> {
         actions: [
           IconButton(
             icon: Icon(Icons.save),
-            onPressed: () => _controller.saveForm(
+            onPressed: () => addProduct.saveForm(
               context: context,
               formData: formData,
               formKey: formKey,
@@ -144,7 +152,7 @@ class _ProductFormScreenState extends State<ProductFormScreen> {
                       decoration: InputDecoration(labelText: "URL da imagem"),
                       focusNode: imagemFocusNode,
                       onSaved: (newValue) => formData["imageUrl"] = newValue,
-                      onFieldSubmitted: (_) => _controller.saveForm(
+                      onFieldSubmitted: (_) => addProduct.saveForm(
                         context: context,
                         formData: formData,
                         formKey: formKey,
@@ -153,7 +161,7 @@ class _ProductFormScreenState extends State<ProductFormScreen> {
                         if (value.isEmpty) {
                           return "informe um URL";
                         }
-                        if (!_controller.isValidImgUrl(value)) {
+                        if (!isValidImgUrl(value)) {
                           return "informe uma URL valida";
                         }
                         return null;
