@@ -1,10 +1,10 @@
-import 'package:gereaciando_estado/domain/entities/cart_item_modal.dart';
+import 'package:gereaciando_estado/domain/entities/cart_item.dart';
 
-class OrderModal {
+class Order {
   final String id;
   final double total;
-  final List<CartItemModal> pruduts;
+  final List<CartItem> pruduts;
   final DateTime date;
 
-  OrderModal({this.id, this.total, this.pruduts, this.date});
+  Order({this.id, this.total, this.pruduts, this.date});
 }
