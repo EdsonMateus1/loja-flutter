@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:gereaciando_estado/domain/entities/cart_item_modal.dart';
+import 'package:gereaciando_estado/data/model/cart_item_modal.dart';
 import 'package:gereaciando_estado/presenter/providers/cart_provider.dart';
 import 'package:provider/provider.dart';
 
 import 'alert_confirme_delete.dart';
 
-class CartItem extends StatefulWidget {
+class CartItemWidget extends StatefulWidget {
   final CartItemModal cartItem;
 
-  CartItem({@required this.cartItem});
+  CartItemWidget({@required this.cartItem});
 
   @override
   _CartItemState createState() => _CartItemState();
 }
 
-class _CartItemState extends State<CartItem> {
+class _CartItemState extends State<CartItemWidget> {
   int selected = 1;
 
   @override

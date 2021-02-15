@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:gereaciando_estado/domain/entities/cart_item_modal.dart';
-import 'package:gereaciando_estado/domain/entities/product.dart';
+import 'package:gereaciando_estado/data/model/cart_item_modal.dart';
+import 'package:gereaciando_estado/data/model/order_model.dart';
 import 'package:intl/intl.dart';
-import 'package:gereaciando_estado/domain/entities/order.dart';
 
 class OrderItem extends StatefulWidget {
   final OrderModal order;

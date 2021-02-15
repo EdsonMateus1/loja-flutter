@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gereaciando_estado/domain/entities/cart_item_modal.dart';
+import 'package:gereaciando_estado/data/model/cart_item_modal.dart';
 import 'package:gereaciando_estado/presenter/providers/cart_provider.dart';
 import 'package:gereaciando_estado/view/widgets/cart_item.dart';
 import 'package:gereaciando_estado/view/widgets/cart_total_card.dart';
@@ -26,7 +26,7 @@ class CartScreen extends StatelessWidget {
             child: ListView.builder(
               itemCount: cartProvider.lengthCart,
               itemBuilder: (ctx, i) => Container(
-                child: CartItem(
+                child: CartItemWidget(
                   cartItem: cartItem[i],
                 ),
               ),

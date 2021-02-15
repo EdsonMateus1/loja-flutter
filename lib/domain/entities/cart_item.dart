@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 
-class CartItemModal {
+class CartItem {
   final String id;
   final String title;
   final double price;
@@ -8,7 +8,7 @@ class CartItemModal {
   final String description;
   int quatity;
 
-  CartItemModal({
+  CartItem({
     @required this.id,
     @required this.title,
     @required this.price,

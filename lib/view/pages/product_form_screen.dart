@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gereaciando_estado/domain/entities/product.dart';
+import 'package:gereaciando_estado/data/model/product_model.dart';
 import 'package:gereaciando_estado/domain/usecases/add_product.dart';
 
 class ProductFormScreen extends StatefulWidget {
@@ -84,7 +84,7 @@ class _ProductFormScreenState extends State<ProductFormScreen> {
         actions: [
           IconButton(
             icon: Icon(Icons.save),
-            onPressed: () => addProduct.saveForm(
+            onPressed: () => addProduct(
               context: context,
               formData: formData,
               formKey: formKey,
@@ -155,7 +155,7 @@ class _ProductFormScreenState extends State<ProductFormScreen> {
                       decoration: InputDecoration(labelText: "URL da imagem"),
                       focusNode: imagemFocusNode,
                       onSaved: (newValue) => formData["imageUrl"] = newValue,
-                      onFieldSubmitted: (_) => addProduct.saveForm(
+                      onFieldSubmitted: (_) => addProduct(
                         context: context,
                         formData: formData,
                         formKey: formKey,

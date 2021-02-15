@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 
-abstract class DataAddProduct {
+abstract class IRemoteAddProduct {
   void saveForm({
     BuildContext context,
     GlobalKey<FormState> formKey,

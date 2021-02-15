@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 
-class ProductModal {
+class Product {
   final String id;
   String title;
   final String description;
@@ -8,7 +8,7 @@ class ProductModal {
   final String imageUrl;
   bool isFavorite;
 
-  ProductModal({
+  Product({
     @required this.id,
     @required this.title,
     @required this.description,
@@ -16,14 +16,4 @@ class ProductModal {
     @required this.imageUrl,
     this.isFavorite = false,
   });
-
-  factory ProductModal.fromJson(Map<String, dynamic> map) {
-    return ProductModal(
-      id: map["id"],
-      title: map["title"].toString(),
-      description: map["description"].toString(),
-      price: double.parse(map["price"]),
-      imageUrl: map["imageUrl"].toString(),
-    );
-  }
 }

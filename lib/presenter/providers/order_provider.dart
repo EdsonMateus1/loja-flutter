@@ -1,6 +1,7 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:gereaciando_estado/domain/entities/order.dart';
+import 'package:gereaciando_estado/data/model/order_model.dart';
+
 import 'package:gereaciando_estado/presenter/providers/cart_provider.dart';
 
 class OrderProvider with ChangeNotifier {

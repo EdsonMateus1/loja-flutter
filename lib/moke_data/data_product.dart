@@ -1,4 +1,4 @@
-import 'package:gereaciando_estado/domain/entities/product.dart';
+import 'package:gereaciando_estado/data/model/product_model.dart';
 
 final List<ProductModal> Moke_Products = [
   ProductModal(

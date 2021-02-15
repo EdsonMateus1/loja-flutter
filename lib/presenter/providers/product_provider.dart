@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gereaciando_estado/domain/entities/product.dart';
+import 'package:gereaciando_estado/data/model/product_model.dart';
 import 'package:gereaciando_estado/moke_data/data_product.dart';
 
 class ProductsProvider with ChangeNotifier {
